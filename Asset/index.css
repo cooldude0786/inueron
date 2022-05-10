@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: azure;
+}
+.bglb {
+  background-color: lavenderblush;
+}
+.bookap {
+  background-image: url("Image/pic2.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 446px;
+}
