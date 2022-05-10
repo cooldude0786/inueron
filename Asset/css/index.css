@@ -1,8 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Oleo+Script+Swash+Caps&display=swap');
 body {
   margin: 0;
   padding: 0;
   background-color: azure;
+}
+.IndeiFlower{
+  font-family: 'Indie Flower', cursive;
 }
 .bglb {
   background-color: lavenderblush;
@@ -13,18 +16,24 @@ body {
   background-size: contain;
   height: 446px;
 }
-img {
+.navimg {
+  height: 25px;;
+}
+.ti {
   height: 215px;
   width: 50%;
 }
+.j-c-c {
+  justify-content: center;
+}
 .bookappointmenttxt {
-  height: 36%;
+  height: 24%;
   width: 55%;
-  background: burlywood;
+  background: black;
   font-size: 20px;
 }
 .bookappointmenttxt a {
-  color: #007bff;
+  color: white;
   text-decoration: none;
   font-family: "Oleo Script Swash Caps", cursive;
 }
@@ -52,15 +61,21 @@ img {
   transform: scaleX(1);
   transform-origin: bottom center;
 }
-@media screen and (min-device-width: 320px) and (max-device-width: 480px){
-  .bookappointmenttxt{
-  background: burlywood;
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .Login {
+    margin-left: auto;
   }
-  img{
+  .bookappointmenttxt {
+    background: black;
+  }
+  img {
     height: 154px;
   }
   .bookappointmenttxt {
     width: 93%;
     font-size: 12px;
+  }
+  .j-c-c {
+    justify-content: start;
   }
 }

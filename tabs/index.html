@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="Asset/index.css">
+    <link rel="stylesheet" type="text/css" href="Asset/css/index.css">
+    <script src="https://kit.fontawesome.com/c153436894.js" crossorigin="anonymous"></script>
     <title>Appointment</title>
 </head>
 
@@ -18,18 +19,32 @@
         </div>
     </div> -->
     <nav class="navbar navbar-light bglb">
-        <span class="navbar-brand mb-0 h1 m-0">Teacher Booking Appointment</span>
-        <button class="btn btn-outline-primary my-2 my-sm-0" id="Login">Login</button>
+        <span class="navbar-brand mb-0 h1 m-0 IndeiFlower" id="navtittle">Teacher Booking Appointment 
+            <img src="Asset/Image/comp.jpeg" class="navimg"></span>
+        <button class="btn btn-outline-primary my-2 my-sm-0 Login" id="Login">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Login
+        </button>
     </nav>
     <div class="row col-md-12 bookap p-0 m-0 justify-content-center">
         <div class="container pt-3 w-75">
-            <div class="row">
-                <img src="Asset/Image/pic2.jpg">
+            <!-- <div class="row">
+                <img src="Image/comp.jpg">
+            </div> -->
+            <div class="row d-flex">
+                <img src="Asset/Image/pic2.jpg" class="ti p-0">
+                <div class="w-50 d-flex j-c-c p-0 align-items-center">
+                    <div class="align-items-center justify-content-center d-flex  rounded bookappointmenttxt">
+                        <span>
+                            <a href="/login" class="hover-underline-animation">Let's Get Started</a>
+                        </span>
+                    </div>
+                </div>
             </div>
             <div class="row d-flex flex-row-reverse">
-                <img src="Asset/Image/pic.jpg" class=" p-0">
-                <div class="w-50 d-flex justify-content-center p-0 align-items-center">
-                    <div class="align-items-center d-flex justify-content-center rounded bookappointmenttxt">
+                <img src="Asset/Image/pic.jpg" class="ti p-0">
+                <div class="w-50 d-flex j-c-c p-0 align-items-center">
+                    <div class="align-items-center justify-content-center d-flex  rounded bookappointmenttxt">
                         <span>
                             <a href="/home/studentlogin" class="hover-underline-animation">Book An Appointment</a>
                         </span>
@@ -48,7 +63,7 @@
 <script>
     $("#Login").click(function () {
         console.log("press login")
-        window.location.href = "/admin";
+        window.location.href = "/login";
     });
 </script>
 <!-- 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 this is -->

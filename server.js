@@ -18,3 +18,6 @@ app.get("/home/teacherlogin",(req,res)=>{
 app.get("/admin",(req,res)=>{
     res.sendFile(__dirname+`/tabs/admin.html`)
 }) 
+app.get("/login",(req,res)=>{
+    res.sendFile(__dirname+`/tabs/login.html`)
+}) 
