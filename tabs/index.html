@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,23 +12,45 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row col-md-12 pt-2 justify-content-center">
+    <!-- <div class="container">
+        <div class="row col-md-12 pt-2 justify-content-center text-center">
             <span class="display-4 pb-2 pl-2 pr-2 rounded bglb">Teacher Booking Appointment</span>
         </div>
-    </div>
-    <div class="row col-md-12 bookap">
-        <div class="container">
-            book an Appointment
+    </div> -->
+    <nav class="navbar navbar-light bglb">
+        <span class="navbar-brand mb-0 h1 m-0">Teacher Booking Appointment</span>
+        <button class="btn btn-outline-primary my-2 my-sm-0" id="Login">Login</button>
+    </nav>
+    <div class="row col-md-12 bookap p-0 m-0 justify-content-center">
+        <div class="container pt-3 w-75">
+            <div class="row">
+                <img src="Asset/Image/pic2.jpg">
+            </div>
+            <div class="row d-flex flex-row-reverse">
+                <img src="Asset/Image/pic.jpg" class=" p-0">
+                <div class="w-50 d-flex justify-content-center p-0 align-items-center">
+                    <div class="align-items-center d-flex justify-content-center rounded bookappointmenttxt">
+                        <span>
+                            <a href="/home/studentlogin" class="hover-underline-animation">Book An Appointment</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <h2>hi</h2>
+    <!-- <h2>hi</h2>
     <a href="/home/studentlogin">student</a>
     <a href="/home/teacherlogin">Teacher</a>
-    <a href="/admin">Admin</a>
+    <a href="/admin">Admin</a> -->
 </body>
 
 </html>
-<!-- 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 this is -->  
+<script>
+    $("#Login").click(function () {
+        console.log("press login")
+        window.location.href = "/admin";
+    });
+</script>
+<!-- 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 this is -->
 <!-- second commit re checking -->
 <!-- checking that pull work-->

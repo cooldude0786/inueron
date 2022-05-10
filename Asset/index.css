@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -7,8 +8,59 @@ body {
   background-color: lavenderblush;
 }
 .bookap {
-  background-image: url("Image/pic2.jpg");
+  /* background-image: url("Image/pic2.jpg"); */
   background-repeat: no-repeat;
   background-size: contain;
   height: 446px;
+}
+img {
+  height: 215px;
+  width: 50%;
+}
+.bookappointmenttxt {
+  height: 36%;
+  width: 55%;
+  background: burlywood;
+  font-size: 20px;
+}
+.bookappointmenttxt a {
+  color: #007bff;
+  text-decoration: none;
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+.bookappointmenttxt a:hover {
+  color: #007bff;
+}
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  /* color: blue; */
+}
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom center;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+  .bookappointmenttxt{
+  background: burlywood;
+  }
+  img{
+    height: 154px;
+  }
+  .bookappointmenttxt {
+    width: 93%;
+    font-size: 12px;
+  }
 }
