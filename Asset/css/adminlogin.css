@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: azure;
+  }
+  .hrem30 {
+    height: 30rem;
+  }
+  .compimg {
+      width: 60%;
+  }
+  .backgroudColorWhiteSmoke {
+    background-color: whitesmoke;
+  }
+  .Login{
+      background-color: black;
+      color: white;
+  }
+  .Login:hover{
+      color: #007bff;
+  }

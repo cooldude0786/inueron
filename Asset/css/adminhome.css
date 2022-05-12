@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: azure;
+}
+.main {
+  height: 100vh;
+}
+.sidebar {
+  background-color: antiquewhite;
+  width: 9rem;
+}
+.sidebar ul li {
+  padding: 5px 0;
+}
+.mainbody {
+  width: 90%;
+}
+.Login {
+  background-color: black;
+  color: white;
+}
+.Login:hover {
+  color: white;
+}
+.Login {
+  display: inline-block;
+  position: relative;
+  /* color: blue; */
+}
+.Login:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom center;
+  transition: transform 0.25s ease-out;
+}
+.Login:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
+.teacher {
+    background-color:aquamarine ;
+    border-radius: 6px;
+}

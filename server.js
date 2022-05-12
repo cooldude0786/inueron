@@ -20,4 +20,10 @@ app.get("/admin",(req,res)=>{
 }) 
 app.get("/login",(req,res)=>{
     res.sendFile(__dirname+`/tabs/login.html`)
+})
+app.get("/adminlogin",(req,res)=>{
+    res.sendFile(__dirname+`/tabs/adminlogin.html`)
+}) 
+app.get("/adminpage",(req,res)=>{
+    res.sendFile(__dirname+`/tabs/adminhome.html`)
 }) 

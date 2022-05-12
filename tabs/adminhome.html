@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <!-- <script src="https://kit.fontawesome.com/c153436894.js" crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Asset/css/adminhome.css">
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <div class="main d-flex">
+        <div class="sidebar">
+            <ul class="nav flex-column align-items-center ">
+                <li class="nav-item w-100 px-1">
+                    <button class="btn my-2 my-sm-0 Login p-1 w-100" id="Teacher">Add Teacher</button>
+                </li>
+                <li class="nav-item w-100 px-1">
+                    <button class="btn my-2 my-sm-0 Login p-1 w-100" id="UpdateTeacher">Update Teacher</button>
+                </li>
+            </ul>
+        </div>
+        <div class="align-items-center d-flex justify-content-center mainbody" id="mainbody">
+            <div class="teacher p-2 w-50">
+                <form action="">
+                    <h2>Add Teacher</h2>
+                    <hr class="dashed">
+                    <div class="d-flex py-1">
+                        <div>
+                            <span>Name</span>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="name"
+                                aria-label="Enter name">
+                        </div>
+                        <hr class="dashed">
+                        <div>
+                            <span>Departement</span>
+                            <input type="text" name="Departement" id="Departement" class="form-control"
+                                placeholder="Departement" aria-label="Enter Departement">
+                        </div>
+                    </div>
+                    <div class="d-flex py-1">
+                        <div>
+                            <span>Subject</span>
+                            <input type="text" name="Subject" id="Subject" class="form-control" placeholder="Subject"
+                                aria-label="Enter Subject">
+                        </div>
+                        <hr class="dashed">
+                        <div>
+                            <span>ID</span>
+                            <input type="text" name="id" id="id" class="form-control" placeholder="id"
+                                aria-label="Enter id">
+                        </div>
+                    </div>
+                    <div class="d-flex py-1">
+                        <div>
+                            <span>Phone no.</span>
+                            <input type="text" name="Phone_no" id="Subject" class="form-control" placeholder="Phone no."
+                                aria-label="Enter Phone no.">
+                        </div>
+                        <hr class="dashed">
+                        <div>
+                            <span>Address</span>
+                            <input type="text" name="Address" id="address" class="form-control" placeholder="address"
+                                aria-label="Enter Address">
+                        </div>
+                    </div>
+                    <div class="d-flex py-1 justify-content-center">
+                        <button class="btn btn-dark" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("form").submit(function () {
+            let name = $("#name").val()
+            let Departement = $("#Departement").val()
+            console.log(name,Departement)
+            return false
+        });
+        // console.log("This File is for Admin Home")
+        $('#Teacher').click(function () {
+            let Div = document.createElement('div')
+            Div.setAttribute("id", "Teacher")
+            Div.innerHTML = '<div class="teacher">Adding Teacher Blog<button onclick="x(this)">i21</button></div>'
+            console.log(Div)
+            document.getElementById("mainbody").innerHTML = ""
+            document.getElementById("mainbody").append(Div)
+        });
+        $('#UpdateTeacher').click(function () {
+            let Div = document.createElement('div')
+            Div.setAttribute("id", "Teacher")
+            Div.innerHTML = '<div class="UDteacher">Update/Delete Teacher <button onclick="x(this)">i21</button></div>'
+            console.log(Div)
+            document.getElementById("mainbody").innerHTML = ""
+            document.getElementById("mainbody").append(Div)
+        });
+        function x(this_) {
+            console.log("hi", this_)
+        }
+    </script>
+</body>
+
+</html>
+<!--
+    chicken tika khabus shawrma -3(amir,suraj,parth)116
+    rumali -3(summit,mayur(veed-mayur),pooja(sidhi-pooja))116
+    khabus -3(me,trushali)89
+op 137
+348 
+348
+178
+696
+         
+-->
