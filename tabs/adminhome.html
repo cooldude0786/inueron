@@ -25,45 +25,45 @@
             </ul>
         </div>
         <div class="align-items-center d-flex justify-content-center mainbody" id="mainbody">
-            <div class="teacher p-2 w-50">
-                <form action="">
+            <div id="teacher" class="teacher d-none p-2">
+                <form action="" method="post">
                     <h2>Add Teacher</h2>
                     <hr class="dashed">
-                    <div class="d-flex py-1">
+                    <div class="d-flex justify-content-around flex-wrap py-1">
                         <div>
-                            <span>Name</span>
+                            <span id="felidname" class="spanfiled">Name</span>
                             <input type="text" name="name" id="name" class="form-control" placeholder="name"
                                 aria-label="Enter name">
                         </div>
-                        <hr class="dashed">
+
                         <div>
-                            <span>Departement</span>
+                            <span id="felidDepartement" class="spanfiled">Departement</span>
                             <input type="text" name="Departement" id="Departement" class="form-control"
                                 placeholder="Departement" aria-label="Enter Departement">
                         </div>
                     </div>
-                    <div class="d-flex py-1">
+                    <div class="d-flex justify-content-around flex-wrap py-1">
                         <div>
-                            <span>Subject</span>
+                            <span id="felidSubject" class="spanfiled">Subject</span>
                             <input type="text" name="Subject" id="Subject" class="form-control" placeholder="Subject"
                                 aria-label="Enter Subject">
                         </div>
-                        <hr class="dashed">
+
                         <div>
-                            <span>ID</span>
-                            <input type="text" name="id" id="id" class="form-control" placeholder="id"
+                            <span id="felidID" class="spanfiled">ID</span>
+                            <input type="text" name="ID" id="ID" class="form-control" placeholder="id"
                                 aria-label="Enter id">
                         </div>
                     </div>
-                    <div class="d-flex py-1">
+                    <div class="d-flex justify-content-around flex-wrap py-1">
                         <div>
-                            <span>Phone no.</span>
-                            <input type="text" name="Phone_no" id="Subject" class="form-control" placeholder="Phone no."
-                                aria-label="Enter Phone no.">
+                            <span id="felidPhone_no" class="spanfiled">Phone no.</span>
+                            <input type="number" maxlength="10" minlength="10" name="Phone_no" id="Phone_no"
+                                class="form-control" placeholder="Phone no." aria-label="Enter Phone no.">
                         </div>
-                        <hr class="dashed">
+
                         <div>
-                            <span>Address</span>
+                            <span id="felidaddress" class="spanfiled">Address</span>
                             <input type="text" name="Address" id="address" class="form-control" placeholder="address"
                                 aria-label="Enter Address">
                         </div>
@@ -73,36 +73,193 @@
                     </div>
                 </form>
             </div>
+            <div id="updateteacher" class="updateteacher d-none flex-wrap">
+                <div class="utcard  p-2 rounded col-sm-3">
+                    <div class="p-1 rounded bcblack col-sm-12">
+                        <div class="d-flex flex-column bcwhite justify-content-between col-sm-12 ffserif">
+                            <div class="d-flex p-1 col-sm-12">
+                                <div>Name: </div>
+                                <div> khizar2922</div>
+                            </div>
+                            <div class="d-flex p-1 col-sm-12">
+                                <div>Id :</div>
+                                <div>id213456</div>
+                            </div>
+                            <div class="d-flex p-1 col-sm-12">
+                                <div>D.T :</div>
+                                <div>secondary</div>
+                            </div>
+                            <div class="d-flex p-1 col-sm-12">
+                                <div>Subject :</div>
+                                <div>Maths</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Khizar (teacher)</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            
+                            
+                            <div class="d-flex justify-content-around flex-wrap py-1">
+                                <div>
+                                    <span id="felidname" class="spanfiled">Name</span>
+                                    <input type="text" name="name" id="updatename" class="form-control" placeholder="name"
+                                        aria-label="Enter name">
+                                </div>
+        
+                                <div>
+                                    <span id="felidDepartement" class="spanfiled">Departement</span>
+                                    <input type="text" name="Departement" id="updateDepartement" class="form-control"
+                                        placeholder="Departement" aria-label="Enter Departement">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-around flex-wrap py-1">
+                                <div>
+                                    <span id="felidSubject" class="spanfiled">Subject</span>
+                                    <input type="text" name="Subject" id="updateSubject" class="form-control" placeholder="Subject"
+                                        aria-label="Enter Subject">
+                                </div>
+        
+                                <div>
+                                    <span id="felidID" class="spanfiled">ID</span>
+                                    <input type="text" name="ID" id="updateID" class="form-control" placeholder="id"
+                                        aria-label="Enter id">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-around flex-wrap py-1">
+                                <div>
+                                    <span id="felidPhone_no" class="spanfiled">Phone no.</span>
+                                    <input type="number" maxlength="10" minlength="10" name="Phone_no" id="Phone_no"
+                                        class="form-control" placeholder="Phone no." aria-label="Enter Phone no.">
+                                </div>
+        
+                                <div>
+                                    <span id="felidaddress" class="spanfiled">Address</span>
+                                    <input type="text" name="Address" id="updateaddress" class="form-control" placeholder="address"
+                                        aria-label="Enter Address">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" id="modalbtn" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <script>
+        function $1(param1) {
+            return document.getElementById(param1)
+        }
+        $1("modalbtn").addEventListener("click", () => {
+            console.log("a")
+            $('#exampleModal').modal('hide');
+
+        })
         $("form").submit(function () {
-            let name = $("#name").val()
-            let Departement = $("#Departement").val()
-            console.log(name,Departement)
+            var name = document.getElementById("name")
+            let Departement = document.getElementById("Departement")
+            let Subject = document.getElementById("Subject")
+            let ID = document.getElementById("ID")
+            let Phone_no = document.getElementById("Phone_no")
+            let address = document.getElementById("address")
+            if (name.value == "") {
+                $1("felidname").classList.add("error")
+                name.classList.add("errorinput")
+            } else {
+                $1("felidname").classList.remove("error")
+                name.classList.remove("errorinput")
+            }
+            if (Departement.value == "") {
+                $1("felidDepartement").classList.add("error")
+                Departement.classList.add("errorinput")
+            } else {
+                $1("felidDepartement").classList.remove("error")
+                Departement.classList.remove("errorinput")
+            }
+            if (Subject.value == "") {
+                $1("felidSubject").classList.add("error")
+                Subject.classList.add("errorinput")
+            } else {
+                $1("felidSubject").classList.remove("error")
+                Subject.classList.remove("errorinput")
+            }
+            if (ID.value == "") {
+                $1("felidID").classList.add("error")
+                ID.classList.add("errorinput")
+            } else {
+                $1("felidID").classList.remove("error")
+                ID.classList.remove("errorinput")
+            }
+            if (Phone_no.value == '') {
+                $1("felidPhone_no").classList.add("error")
+                Phone_no.classList.add("errorinput")
+            } else {
+                $1("felidPhone_no").classList.remove("error")
+                Phone_no.classList.remove("errorinput")
+            }
+            if (address.value == "") {
+                $1("felidaddress").classList.add("error")
+                address.classList.add("errorinput")
+            } else {
+                $1("felidaddress").classList.remove("error")
+                address.classList.remove("errorinput")
+            }
             return false
         });
-        // console.log("This File is for Admin Home")
         $('#Teacher').click(function () {
-            let Div = document.createElement('div')
-            Div.setAttribute("id", "Teacher")
-            Div.innerHTML = '<div class="teacher">Adding Teacher Blog<button onclick="x(this)">i21</button></div>'
-            console.log(Div)
-            document.getElementById("mainbody").innerHTML = ""
-            document.getElementById("mainbody").append(Div)
+            $1("teacher").classList.remove("d-none")
+            $1("updateteacher").classList.add("d-none")
+            $1("updateteacher").classList.remove("d-flex")
+            // let Div = document.createElement('div')
+            // Div.setAttribute("id", "Teacher")
+            // Div.innerHTML = '<div class="teacher">Adding Teacher Blog<button onclick="x(this)">i21</button></div>'
+            // document.getElementById("mainbody").innerHTML = ""
+            // document.getElementById("mainbody").append(Div)
         });
         $('#UpdateTeacher').click(function () {
-            let Div = document.createElement('div')
-            Div.setAttribute("id", "Teacher")
-            Div.innerHTML = '<div class="UDteacher">Update/Delete Teacher <button onclick="x(this)">i21</button></div>'
-            console.log(Div)
-            document.getElementById("mainbody").innerHTML = ""
-            document.getElementById("mainbody").append(Div)
+            $1("teacher").classList.add("d-none")
+            $1("updateteacher").classList.add("d-flex")
+            $1("updateteacher").classList.remove("d-none")
         });
         function x(this_) {
             console.log("hi", this_)
         }
+
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
@@ -115,5 +272,5 @@ op 137
 348
 178
 696
-         
+khizar2922
 -->

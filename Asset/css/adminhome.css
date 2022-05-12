@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Oleo+Script+Swash+Caps&family=Public+Sans:wght@200&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -8,13 +9,13 @@ body {
 }
 .sidebar {
   background-color: antiquewhite;
-  width: 9rem;
+  width: 71px;
 }
 .sidebar ul li {
   padding: 5px 0;
 }
 .mainbody {
-  width: 90%;
+  width: -webkit-fill-available;
 }
 .Login {
   background-color: black;
@@ -45,6 +46,37 @@ body {
   transform-origin: bottom center;
 }
 .teacher {
-    background-color:aquamarine ;
-    border-radius: 6px;
+  background-color: aquamarine;
+  border-radius: 6px;
+  width: 75%;
+}
+.error {
+  color: red;
+  font-weight: bold;
+}
+.errorinput {
+  box-shadow: 0 0 0 0.1rem red;
+  border-color: red;
+}
+.errorinput:focus {
+  border-color: red;
+  box-shadow: none;
+}
+.spanfiled {
+  font-family: "Public Sans", sans-serif;
+}
+.updateteacher {
+  width: 100%;
+}
+.utcard {
+  /* width: 30.33%; */
+}
+.bcblack {
+  background-color: black;
+}
+.bcwhite {
+  background-color: white;
+}
+.ffserif {
+  font-family: serif;
 }
