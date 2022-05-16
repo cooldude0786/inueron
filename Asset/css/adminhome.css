@@ -9,7 +9,7 @@ body {
 }
 .sidebar {
   background-color: antiquewhite;
-  width: 71px;
+  width: 110px;
 }
 .sidebar ul li {
   padding: 5px 0;
@@ -79,4 +79,19 @@ body {
 }
 .ffserif {
   font-family: serif;
+}
+.studentcard {
+  background-color: rgb(59, 179, 248);
+  border-radius: 4px;
+}
+.approvestudent .outer-body {
+  background-color: white;
+  border-radius: 4px;
+}
+.StdVal {
+  font-size: 13px;
+}
+.StdHeading {
+  font-size: 14px;
+  font-family: monospace;
 }

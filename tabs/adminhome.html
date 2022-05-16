@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <!-- <script src="https://kit.fontawesome.com/c153436894.js" crossorigin="anonymous"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/c153436894.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="Asset/css/adminhome.css">
     <title>Admin Page</title>
 </head>
@@ -17,10 +18,16 @@
         <div class="sidebar">
             <ul class="nav flex-column align-items-center ">
                 <li class="nav-item w-100 px-1">
+                    <button class="btn my-2 my-sm-0 Login p-1 w-100" id="HomePage"><i class="fa-solid fa-house"></i> Home</button>
+                </li>
+                <li class="nav-item w-100 px-1">
                     <button class="btn my-2 my-sm-0 Login p-1 w-100" id="Teacher">Add Teacher</button>
                 </li>
                 <li class="nav-item w-100 px-1">
                     <button class="btn my-2 my-sm-0 Login p-1 w-100" id="UpdateTeacher">Update Teacher</button>
+                </li>
+                <li class="nav-item w-100 px-1">
+                    <button class="btn my-2 my-sm-0 Login p-1 w-100" id="ApproveStudent">Approve Student</button>
                 </li>
             </ul>
         </div>
@@ -73,21 +80,57 @@
                     </div>
                 </form>
             </div>
-            <div id="updateteacher" class="updateteacher d-none flex-wrap">
+            <div id="updateteacher" class="updateteacher  d-none flex-wrap">
                 <div class="utcard  p-2 rounded col-sm-3">
                     <div class="p-1 rounded bcblack col-sm-12">
-                        <div class="d-flex flex-column bcwhite justify-content-between col-sm-12 ffserif">
+                        <div onclick="CardContain(this)"
+                            class="d-flex flex-column bcwhite justify-content-between col-sm-12 ffserif">
                             <div class="d-flex p-1 col-sm-12">
                                 <div>Name: </div>
-                                <div> khizar2922</div>
+                                <div>
+                                    <NameOfTecaher> khizar2922</NameOfTecaher>
+                                </div>
                             </div>
                             <div class="d-flex p-1 col-sm-12">
                                 <div>Id :</div>
-                                <div>id213456</div>
+                                <div>
+                                    <IdOfTeacher>id213456</IdOfTeacher>
+                                </div>
                             </div>
                             <div class="d-flex p-1 col-sm-12">
                                 <div>D.T :</div>
-                                <div>secondary</div>
+                                <div>
+                                    <NameOfDepartment>secondary</NameOfDepartment>
+                                </div>
+                            </div>
+                            <div class="d-flex p-1 col-sm-12">
+                                <div>Subject :</div>
+                                <div>Maths</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="utcard  p-2 rounded col-sm-3">
+                    <div class="p-1 rounded bcblack col-sm-12">
+                        <div onclick="CardContain(this)"
+                            class="d-flex flex-column bcwhite justify-content-between col-sm-12 ffserif">
+                            <div class="d-flex p-1 col-sm-12">
+                                <div>Name: </div>
+                                <div>
+                                    <NameOfTecaher> Parth Sir</NameOfTecaher>
+                                </div>
+                            </div>
+                            <div class="d-flex p-1 col-sm-12">
+                                <div>Id :</div>
+                                <div>
+                                    <IdOfTeacher>id213456</IdOfTeacher>
+                                </div>
+                            </div>
+                            <div class="d-flex p-1 col-sm-12">
+                                <div>D.T :</div>
+                                <div>
+                                    <NameOfDepartment>secondary</NameOfDepartment>
+                                </div>
                             </div>
                             <div class="d-flex p-1 col-sm-12">
                                 <div>Subject :</div>
@@ -97,79 +140,130 @@
                     </div>
                 </div>
             </div>
-
-
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Launch demo modal
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Khizar (teacher)</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+            <div id="approvestudent" class="approvestudent justify-content-around col-sm-12 d-flex flex-wrap">
+                <div class="studentcard col-sm-4 p-2">
+                    <div class="outer-body p-1">
+                        <div class="row1">
+                            <div class="main-body flex-wrap d-flex">
+                                <div class="d-flex name-body align-items-center">
+                                    <div class="StdHeading pl-1">Name:</div>
+                                    <div class="StdVal pl-1">Khizar Shaikh</div>
+                                </div>
+                                <div class="roll-body d-flex align-items-center">
+                                    <div class="StdHeading pl-1">RollNo.</div>
+                                    <div class="StdVal pl-1">FS19IF034</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            
-                            
-                            <div class="d-flex justify-content-around flex-wrap py-1">
-                                <div>
-                                    <span id="felidname" class="spanfiled">Name</span>
-                                    <input type="text" name="name" id="updatename" class="form-control" placeholder="name"
-                                        aria-label="Enter name">
+                        <div class="row2">
+                            <div class="main-body flex-wrap d-flex">
+                                <div class="d-flex dob-body align-items-center">
+                                    <div class="StdHeading pl-1">Dob :-</div>
+                                    <div class="StdVal pl-1">29-04-2003</div>
                                 </div>
-        
-                                <div>
-                                    <span id="felidDepartement" class="spanfiled">Departement</span>
-                                    <input type="text" name="Departement" id="updateDepartement" class="form-control"
-                                        placeholder="Departement" aria-label="Enter Departement">
+                                <div class="blood-body d-flex align-items-center">
+                                    <div class="StdHeading pl-1">Blood group:</div>
+                                    <div class="StdVal pl-1">B+</div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-around flex-wrap py-1">
-                                <div>
-                                    <span id="felidSubject" class="spanfiled">Subject</span>
-                                    <input type="text" name="Subject" id="updateSubject" class="form-control" placeholder="Subject"
-                                        aria-label="Enter Subject">
-                                </div>
-        
-                                <div>
-                                    <span id="felidID" class="spanfiled">ID</span>
-                                    <input type="text" name="ID" id="updateID" class="form-control" placeholder="id"
-                                        aria-label="Enter id">
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-around flex-wrap py-1">
-                                <div>
-                                    <span id="felidPhone_no" class="spanfiled">Phone no.</span>
-                                    <input type="number" maxlength="10" minlength="10" name="Phone_no" id="Phone_no"
-                                        class="form-control" placeholder="Phone no." aria-label="Enter Phone no.">
-                                </div>
-        
-                                <div>
-                                    <span id="felidaddress" class="spanfiled">Address</span>
-                                    <input type="text" name="Address" id="updateaddress" class="form-control" placeholder="address"
-                                        aria-label="Enter Address">
-                                </div>
-                            </div>
-
-
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" id="modalbtn" class="btn btn-primary">Save changes</button>
+                        <div class="row3">
+                            <div class="main-body flex-wrap d-flex">
+                                <div class="d-flex w-100 dob-body">
+                                    <div class="StdHeading pl-1">Address:</div>
+                                    <div class="StdVal pl-1">Malad West Mumbai 95</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row4">
+                            <div class="main-body flex-wrap d-flex">
+                                <div class="d-flex dob-body align-items-center">
+                                    <div class="StdHeading pl-1">Phone no :</div>
+                                    <div class="StdVal pl-1">8828045311</div>
+                                </div>
+                                <div class="d-flex dob-body align-items-center">
+                                    <div class="StdHeading pl-1">DOI :</div>
+                                    <div class="StdVal pl-1">16/05/2022</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Launch demo modal
+            </button> -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Khizar (teacher)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <div class="d-flex justify-content-around flex-wrap py-1">
+                            <div>
+                                <span id="felidname" class="spanfiled">Name</span>
+                                <input type="text" name="name" id="updatename" class="form-control" placeholder="name"
+                                    aria-label="Enter name">
+                            </div>
+
+                            <div>
+                                <span id="felidDepartement" class="spanfiled">Departement</span>
+                                <input type="text" name="Departement" id="updateDepartement" class="form-control"
+                                    placeholder="Departement" aria-label="Enter Departement">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-around flex-wrap py-1">
+                            <div>
+                                <span id="felidSubject" class="spanfiled">Subject</span>
+                                <input type="text" name="Subject" id="updateSubject" class="form-control"
+                                    placeholder="Subject" aria-label="Enter Subject">
+                            </div>
+
+                            <div>
+                                <span id="felidID" class="spanfiled">ID</span>
+                                <input type="text" name="ID" id="updateID" class="form-control" placeholder="id"
+                                    aria-label="Enter id">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-around flex-wrap py-1">
+                            <div>
+                                <span id="felidPhone_no" class="spanfiled">Phone no.</span>
+                                <input type="number" maxlength="10" minlength="10" name="Phone_no" id="Phone_no"
+                                    class="form-control" placeholder="Phone no." aria-label="Enter Phone no.">
+                            </div>
+
+                            <div>
+                                <span id="felidaddress" class="spanfiled">Address</span>
+                                <input type="text" name="Address" id="updateaddress" class="form-control"
+                                    placeholder="address" aria-label="Enter Address">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="modalbtn" class="btn btn-primary">Save changes</button>
+                        <button type="button" id="modalbtndelete" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     </div>
     <script>
         function $1(param1) {
@@ -179,6 +273,9 @@
             console.log("a")
             $('#exampleModal').modal('hide');
 
+        })
+        $('#HomePage').click(()=>{
+            window.location.href = "/"
         })
         $("form").submit(function () {
             var name = document.getElementById("name")
@@ -233,23 +330,32 @@
         });
         $('#Teacher').click(function () {
             $1("teacher").classList.remove("d-none")
-            $1("updateteacher").classList.add("d-none")
             $1("updateteacher").classList.remove("d-flex")
-            // let Div = document.createElement('div')
-            // Div.setAttribute("id", "Teacher")
-            // Div.innerHTML = '<div class="teacher">Adding Teacher Blog<button onclick="x(this)">i21</button></div>'
-            // document.getElementById("mainbody").innerHTML = ""
-            // document.getElementById("mainbody").append(Div)
+            $1("updateteacher").classList.add("d-none")
+            $1("approvestudent").classList.add("d-none")
+            $1("approvestudent").classList.remove("d-flex")
         });
         $('#UpdateTeacher').click(function () {
             $1("teacher").classList.add("d-none")
             $1("updateteacher").classList.add("d-flex")
             $1("updateteacher").classList.remove("d-none")
+            $1("approvestudent").classList.add("d-none")
+            $1("approvestudent").classList.remove("d-flex")
         });
-        function x(this_) {
-            console.log("hi", this_)
+        $("#ApproveStudent").click(() => {
+            $1("teacher").classList.add("d-none")
+            $1("updateteacher").classList.add("d-none")
+            $1("updateteacher").classList.remove("d-flex")
+            $1("approvestudent").classList.remove("d-none")
+            $1("approvestudent").classList.add("d-flex")
+        })
+        function CardContain(This) {
+            $("#exampleModal").modal();
+            // console.log(arguments[0])
+            // alert("ed")
+            // console.log(document.getElementsByTagName("NameOfTecaher")['0']['innerText'])
+            console.log(This.getElementsByTagName("NameOfTecaher")[0]['innerText'])
         }
-
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

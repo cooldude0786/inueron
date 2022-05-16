@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: azure;
+}
+.teacher {
+  background-color: aquamarine;
+  border-radius: 6px;
+  width: 55%;
+}
+.error {
+  color: red;
+  font-weight: bold;
+}
+.errorinput {
+  box-shadow: 0 0 0 0.1rem red;
+  border-color: red;
+}
+.errorinput:focus {
+  border-color: red;
+  box-shadow: none;
+}
+.spanfiled {
+  font-family: "Public Sans", sans-serif;
+}

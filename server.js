@@ -6,7 +6,8 @@ http.listen(port, '0.0.0.0', () =>
     console.log(`listening on http://localhost:${port}`));
 
 app.use("/Asset", express.static(__dirname + "/Asset"));
-app.get("/home",(req,res)=>{
+app.use("/home/Asset", express.static(__dirname + "/Asset"));
+app.get("/",(req,res)=>{
     res.sendFile(__dirname+`/tabs/index.html`)
 })
 app.get("/home/studentlogin",(req,res)=>{
@@ -26,4 +27,7 @@ app.get("/adminlogin",(req,res)=>{
 }) 
 app.get("/adminpage",(req,res)=>{
     res.sendFile(__dirname+`/tabs/adminhome.html`)
-}) 
+})
+app.get("/home/registration",(req,res)=>{
+    res.sendFile(__dirname+`/tabs/register.html`)
+})  
