@@ -1,9 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Oleo+Script+Swash+Caps&display=swap");
+
 body {
   margin: 0;
   padding: 0;
   background-color: azure;
 }
-.teacher {
+.IndeiFlower {
+  font-family: "Indie Flower", cursive;
+}
+.bglb {
+  background-color: lavenderblush;
+}
+.bookap {
+  /* background-image: url("Image/pic2.jpg"); */
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 446px;
+}
+.navimg {
+  height: 25px;
+}
+.bookappointmenttxt {
+  height: 24%;
+  width: 55%;
+  background: black;
+  font-size: 20px;
+}
+.bookappointmenttxt a {
+  color: white;
+  text-decoration: none;
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+.student {
   background-color: aquamarine;
   border-radius: 6px;
   width: 55%;
@@ -22,4 +50,39 @@ body {
 }
 .spanfiled {
   font-family: "Public Sans", sans-serif;
+}
+/* .form-control {
+  width: 190px;
+} */
+.t-msg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 133px;
+  background-color: aliceblue;
+}
+.toast-header {
+  background-color: aliceblue;
+}
+.toast-body span {
+  font-family: "Oleo Script Swash Caps", cursive;
+  letter-spacing: 2px;
+  font-size: 19px;
+  color: cornflowerblue;
+}
+.Login {
+  background-color: black;
+  color: white;
+}
+.error {
+  color: red;
+  font-weight: bold;
+}
+.errorinput {
+  box-shadow: 0 0 0 0.1rem red;
+  border-color: red;
+}
+.errorinput:focus {
+  border-color: red;
+  box-shadow: none;
 }
