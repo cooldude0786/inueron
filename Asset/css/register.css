@@ -56,19 +56,27 @@ body {
 } */
 .t-msg {
   position: fixed;
-  top: 0;
+  top: 56px;
   right: 0;
-  height: 133px;
-  background-color: aliceblue;
-}
-.toast-header {
-  background-color: aliceblue;
+  height: auto;
+  background-color: lightgreen;
 }
 .toast-body span {
   font-family: "Oleo Script Swash Caps", cursive;
   letter-spacing: 2px;
   font-size: 19px;
-  color: cornflowerblue;
+  color: #28a745;
+}
+ .fade:not(.show) {
+  top: 30px;
+}
+/* .toast.hide {
+  display: none;
+  top: 100px;
+  transition: top 0.30s linear;
+} */ 
+.fade {
+  transition: opacity .15s linear, top .25s linear;
 }
 .Login {
   background-color: black;

@@ -10,8 +10,8 @@ app.use("/home/Asset", express.static(__dirname + "/Asset"));
 app.get("/",(req,res)=>{
     res.sendFile(__dirname+`/tabs/index.html`)
 })
-app.get("/home/studentlogin",(req,res)=>{
-    res.sendFile(__dirname+`/tabs/studentlogin.html`)
+app.get("/home/studenthome",(req,res)=>{
+    res.sendFile(__dirname+`/tabs/studenthome.html`)
 })
 app.get("/home/teacherlogin",(req,res)=>{
     res.sendFile(__dirname+`/tabs/teacherlogin.html`)

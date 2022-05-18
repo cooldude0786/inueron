@@ -1,0 +1,59 @@
+.body {
+  background-color: azure;
+  margin: 0;
+  padding: 0;
+}
+.IndeiFlower {
+  font-family: "Indie Flower", cursive;
+}
+.bglb {
+  background-color: lavenderblush;
+}
+.bookap {
+  /* background-image: url("Image/pic2.jpg"); */
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 446px;
+}
+.navimg {
+  height: 25px;
+}
+.main-body-container {
+  /* background-color: aquamarine; */
+  height: 100px;
+}
+.body-scroller {
+  height: 5px;
+}
+.sub-container {
+  /* background-color: beige; */
+  height: auto;
+}
+.main-body-sub {
+    height: 35px;
+}
+.width-100{
+    width: 331px;
+    transition: width .30s linear;
+}
+.width-100{
+    width: 331px;
+    transition: width .30s linear;
+    right: 0;
+}
+.width-0-r {
+    width: 0px;
+    transition: width .30s linear;
+    right: 0;
+}
+.width-0-l {
+    width: 0px;
+    transition: width .30s linear;
+    left: 0;
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .navbar-light .navbar-brand {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.9);
+  }
+}
