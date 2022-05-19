@@ -20,7 +20,7 @@
 }
 .main-body-container {
   /* background-color: aquamarine; */
-  height: 100px;
+  height: auto;
 }
 .body-scroller {
   height: 5px;
@@ -30,16 +30,16 @@
   height: auto;
 }
 .main-body-sub {
-    height: 35px;
+    height: auto;
 }
 .width-100{
-    width: 331px;
+    width: calc(100%);
     transition: width .30s linear;
 }
-.width-100{
-    width: 331px;
-    transition: width .30s linear;
-    right: 0;
+.width-100-r{
+  width: calc(100%);
+  transition: width .30s linear;
+  right: 0;
 }
 .width-0-r {
     width: 0px;
@@ -51,6 +51,9 @@
     transition: width .30s linear;
     left: 0;
 }
+/* .teacher-selector:hover {
+  background-color: red;
+} */
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .navbar-light .navbar-brand {
     font-size: 16px;

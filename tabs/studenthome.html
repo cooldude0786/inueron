@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Student page</title>
 </head>
 
@@ -24,26 +25,47 @@
             Login
         </button>
     </nav>
-    <div class="main-body-sub col-md-12 d-flex flex-wrap justify-content-center">
-        <div class="col-md-3 h-100 bg-success" id="sub-box-1">Search Teacher</div>
-        <div class="col-md-3 h-100 bg-success" id="sub-box-2">Book Appointment</div>
-        <div class="col-md-3 h-100 bg-success" id="sub-box-3">Send Message</div>
+    <div class="main-body-sub col-md-12 d-flex flex-wrap">
+        <div class="col-md-3 h-100 bg-success col-md-4" id="sub-box-1">Search Teacher</div>
+        <div class="col-md-3 h-100 bg-success col-md-4" id="sub-box-2">Book Appointment</div>
+        <div class="col-md-3 h-100 bg-success col-md-4" id="sub-box-3">Send Message</div>
     </div>
     <div class="col-md-12 body-scroller d-flex">
         <div class="col-md-4 position-relative p-0">
             <div class="bg-danger h-100 position-absolute width-0-r width-100" id="sub-scroller-1"></div>
         </div>
         <div class="col-md-4 position-relative p-0">
-            <div class="bg-danger h-100 position-absolute width-0-r width-100" id="sub-scroller-2"></div>
+            <div class="bg-dark  h-100 position-absolute width-0-r width-100" id="sub-scroller-2"></div>
         </div>
         <div class="col-md-4 position-relative p-0">
-            <div class="bg-danger h-100 position-absolute width-0-r width-100" id="sub-scroller-3"></div>
+            <div class="bg-primary h-100 position-absolute width-0-r width-100" id="sub-scroller-3"></div>
         </div>
     </div>
     <div class="col-md-12 d-flex main-body-container">
-        <div class="sub-container col-md-4">a</div>
-        <div class="sub-container col-md-4">b</div>
-        <div class="sub-container col-md-4">c</div>
+        <div class="sub-container col-md-4">
+            search teacher
+            <div class="input-group mb-3">
+                <input type="text" id="teacher-name" class="form-control" placeholder="Enter Teacher Name" aria-label="Enter Teacher Name">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="search-teacher"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+              <div class="teacher-selector border d-flex flex-column mt-2 p-2 rounded" id="1" onclick="selected(this)">
+                  <span id="123">dhgsdh1</span>
+              </div>
+        </div>
+        <div class="sub-container col-md-4">
+            book appointement
+        </div>
+        <div class="sub-container col-md-4">
+            Send Message
+        </div>
     </div>
     <script>
         let from_click = 0
@@ -82,12 +104,26 @@
         function RemoveClass() {
             console.log("from", arguments[0], "to", arguments[1])
             if (arguments[0] <= arguments[1]) {
-                document.getElementById("sub-scroller-" + arguments[0]).classList.add("width-0-r")
+                console.log("if run")
+                $("#sub-scroller-" + arguments[0]).addClass("width-0-r")
+                $("#sub-scroller-" + arguments[1]).removeClass("width-100-r").addClass("width-100")
             }
             else {
-                document.getElementById("sub-scroller-" + arguments[0]).classList.add("width-0-l")
+                console.log("Else run ",arguments[0])
+                $("#sub-scroller-" + arguments[0]).addClass("width-0-l")
+                $("#sub-scroller-" + arguments[1]).addClass('width-100-r').removeClass("width-100")
             }
         }
+        $("#search-teacher").click(()=>{
+            console.log($("#teacher-name").val())
+        })
+       function selected(t){
+        // $(".teacher-selector").addClass("bg-dark")
+            console.log('asdad',t.id)
+        }
+        $("#teacher-name").focusin((event)=>{
+            console.log("as",event)
+        })
     </script>
 </body>
 
