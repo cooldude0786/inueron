@@ -45,20 +45,22 @@
         <div class="sub-container col-md-4">
             search teacher
             <div class="input-group mb-3">
-                <input type="text" id="teacher-name" class="form-control" placeholder="Enter Teacher Name" aria-label="Enter Teacher Name">
+                <input type="text" id="teacher-name" class="form-control" placeholder="Enter Teacher Name"
+                    aria-label="Enter Teacher Name">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="search-teacher"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="btn btn-outline-secondary" type="button" id="search-teacher"><i
+                            class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
-              </div>
-              <select class="custom-select" id="inputGroupSelect01">
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
                 <option selected>Choose...</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
-              </select>
-              <div class="teacher-selector border d-flex flex-column mt-2 p-2 rounded" id="1" onclick="selected(this)">
-                  <span id="123">dhgsdh1</span>
-              </div>
+            </select>
+            <div class="teacher-selector border d-flex flex-column mt-2 p-2 rounded" id="1" onclick="selected(this)">
+                <span id="123">dhgsdh1</span>
+            </div>
         </div>
         <div class="sub-container col-md-4">
             book appointement
@@ -109,21 +111,25 @@
                 $("#sub-scroller-" + arguments[1]).removeClass("width-100-r").addClass("width-100")
             }
             else {
-                console.log("Else run ",arguments[0])
+                console.log("Else run ", arguments[0])
                 $("#sub-scroller-" + arguments[0]).addClass("width-0-l")
                 $("#sub-scroller-" + arguments[1]).addClass('width-100-r').removeClass("width-100")
             }
         }
-        $("#search-teacher").click(()=>{
+        $("#search-teacher").click(() => {
             console.log($("#teacher-name").val())
         })
-       function selected(t){
-        // $(".teacher-selector").addClass("bg-dark")
-            console.log('asdad',t.id)
+        function selected(t) {
+            // $(".teacher-selector").addClass("bg-dark")
+            console.log('asdad', t)
         }
-        $("#teacher-name").focusin((event)=>{
-            console.log("as",event)
+        $("#teacher-name").focusin((event) => {
+            console.log("as", event)
         })
+
+
+       
+
     </script>
 </body>
 

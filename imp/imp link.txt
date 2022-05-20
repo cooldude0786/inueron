@@ -1,0 +1,2 @@
+mongodb+srv://khizar:<password>@cluster0.ijkkm.mongodb.net/test
+mongodb username and password khizar Khizar2922
