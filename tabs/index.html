@@ -19,7 +19,7 @@
         </div>
     </div> -->
     <nav class="navbar navbar-light bglb">
-        <span class="navbar-brand mb-0 h1 m-0 IndeiFlower" id="navtittle">Teacher Booking Appointment 
+        <span class="navbar-brand mb-0 h1 m-0 IndeiFlower" id="navtittle">Teacher Booking Appointment
             <img src="Asset/Image/comp.jpeg" class="navimg"></span>
         <button class="btn btn-outline-primary my-2 my-sm-0 Login" id="Login">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -53,6 +53,7 @@
             </div>
         </div>
     </div>
+    <button id="btn">Get Data</button>
     <!-- <h2>hi</h2>
     <a href="/home/studentlogin">student</a>
     <a href="/home/teacherlogin">Teacher</a>
@@ -65,6 +66,17 @@
         console.log("press login")
         window.location.href = "/adminlogin";
     });
+    function randomIpsum(text, data) {
+        //text.value = 'text from database'; // text is textarea where I want to show text
+        text.value = data
+    }
+    $("#btn").on("click", function () {
+        $.get("/123", function (data) {
+            console.log(data)
+        })
+    })
+
+
 </script>
 <!-- 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 this is -->
 <!-- second commit re checking -->
