@@ -1,8 +1,9 @@
-var express = require('express');
+const express = require('express');
 // const bodyParser=require('body-parser');
 // const api = require('./api');
-var url = require('./routes')
-const dbobj = require('./db')
+const url = require('./routes')
+const apiurl = require('./api')
+// const dbobj = require('./db')
 const app = express();
 const http = require("http").createServer(app);
 const port = 4240
@@ -20,6 +21,8 @@ http.listen(port, '0.0.0.0', () =>
 // })
 
 app.use("/",url)
+
+app.use("/api",apiurl)
 
 app.use("/Asset", express.static(__dirname + "/Asset"));
 
