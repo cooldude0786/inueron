@@ -178,16 +178,18 @@
             console.log(temp)
             if (temp == 0) {
                 $('.toast').toast({ delay: 2000 });
-                $('#toast').toast('show')
-                // console.log("sdfsf")
-                setTimeout(() => {
-                    // window.location.href = "/login"
-                }, 3000)
                 $.post(`http://localhost:4240/api/userform${url}`, function (data) {
-                    console.log(data)
+                    if (data['acknowledged']) {
+                        console.log(data)
+                        $('#toast').toast('show')
+                    }
+                    setTimeout(() => {
+                        window.location.href = "/"
+                    }, 2000)
                 })
+                // console.log("sdfsf")
             }
-            console.log(url)
+            // console.log(url)
             return false
         })
         $('#Login').click(() => {

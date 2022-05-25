@@ -19,3 +19,8 @@ body {
   .Login:hover{
       color: #007bff;
   }
+  .error {
+    color: red;
+    display: flex;
+    /* font-weight: bold; */
+  }

@@ -18,14 +18,17 @@
             <div class="p-4">
                 <img src="Asset/Image/comp.jpeg" class="compimg">
             </div>
-            <form action="">
+            <form action="" method="post">
                 <div class="col-sm-9 input-group ml-auto mr-auto pt-1">
                     <input type="text" name="username" id="username" class="form-control" placeholder="Username"
                         aria-label="Enter USername">
                 </div>
                 <div class="col-sm-9 input-group ml-auto mr-auto pt-4">
-                    <input type="text" name="password" class="form-control" placeholder="password"
+                    <input type="text" name="password" class="form-control" id="password" placeholder="password"
                         aria-label="Enter USername">
+                </div>
+                <div id="error" class="col-md-12 justify-content-center error pt-2">
+
                 </div>
                 <div class="col-12 d-flex justify-content-center py-2">
                     <button type="submit" class="btn my-2 my-sm-0 Login" id="Login">
@@ -42,12 +45,25 @@
 </html>
 <script>
     $("form").submit(function () {
-        let username = $("#username").val()
-        if(username === null || username.length <= 6){
+        let username = $("#username").val().trim()
+        let password = $("#password").val().trim()
+        if (username === null || username.length <= 6) {
+            document.getElementById("error").innerText = 'not valid email'
             console.log("username is invalid")
-        }else{
-            window.location.href = "/adminpage"
-            console.log("else : "+username);
+        } else {
+            document.getElementById("error").innerText = ''
+            // console.log("else : "+username,password);
+            $.post(`http://localhost:4240/api/aL?id=${username}&pas=${password}`, function (data) {
+                if (data.Error != undefined)
+                    document.getElementById("error").innerText = data['Error']
+                else {
+                    localStorage.setItem('AdminID', data.id)
+                    console.log(data['functions'])
+                    // window.location.href = "/adminpage"
+                }
+            })
+
+            // $("#error").addClass('d-none')
         }
 
         return false

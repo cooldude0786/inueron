@@ -18,7 +18,8 @@
         <div class="sidebar">
             <ul class="nav flex-column align-items-center ">
                 <li class="nav-item w-100 px-1">
-                    <button class="btn my-2 my-sm-0 Login p-1 w-100" id="HomePage"><i class="fa-solid fa-house"></i> Home</button>
+                    <button class="btn my-2 my-sm-0 Login p-1 w-100" id="HomePage"><i class="fa-solid fa-house"></i>
+                        Home</button>
                 </li>
                 <li class="nav-item w-100 px-1">
                     <button class="btn my-2 my-sm-0 Login p-1 w-100" id="Teacher">Add Teacher</button>
@@ -141,7 +142,7 @@
                 </div>
             </div>
             <div id="approvestudent" class="approvestudent justify-content-around col-sm-12 d-flex flex-wrap">
-                <div class="studentcard col-sm-4 p-2">
+                <!-- <div class="studentcard col-sm-4 p-2">
                     <div class="outer-body p-1">
                         <div class="row1">
                             <div class="main-body flex-wrap d-flex">
@@ -196,7 +197,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -265,7 +266,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" id="modalbtn" class="btn btn-primary">Save changes</button>
-                        <button type="button" id="modalbtndelete" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                        <button type="button" id="modalbtndelete" class="btn btn-danger"
+                            data-dismiss="modal">Delete</button>
                     </div>
                 </div>
             </div>
@@ -282,7 +284,7 @@
             $('#exampleModal').modal('hide');
 
         })
-        $('#HomePage').click(()=>{
+        $('#HomePage').click(() => {
             window.location.href = "/"
         })
         $("form").submit(function () {
@@ -356,6 +358,7 @@
             $1("updateteacher").classList.remove("d-flex")
             $1("approvestudent").classList.remove("d-none")
             $1("approvestudent").classList.add("d-flex")
+            addToHtml()
         })
         function CardContain(This) {
             $("#exampleModal").modal();
@@ -363,6 +366,82 @@
             // alert("ed")
             // console.log(document.getElementsByTagName("NameOfTecaher")['0']['innerText'])
             console.log(This.getElementsByTagName("NameOfTecaher")[0]['innerText'])
+        }
+        function addToHtml() {
+            let temp;
+            temp = '<div class="studentcard col-sm-4 p-2">'
+            temp += '<div class="outer-body p-1">'
+            temp += '<div class="row1">'
+            temp += '<div class="main-body flex-wrap d-flex">'
+            temp += '<div class="d-flex name-body align-items-center">'
+            temp += '<div class="StdHeading pl-1">Name:'
+            temp += '</div>'
+            temp += '<div class="StdVal pl-1">Khizar Shaikh'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '<div class="roll-body d-flex align-items-center">'
+            temp += '<div class="StdHeading pl-1">RollNo.'
+            temp += '</div>'
+            temp += '<div class="StdVal pl-1">FS19IF034'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '<div class="row2">'
+            temp += '<div class="main-body flex-wrap d-flex">'
+            temp += '<div class="d-flex dob-body align-items-center">'
+            temp += '<div class="StdHeading pl-1">Dob :-'
+            temp += '</div>'
+            temp += '<div class="StdVal pl-1">29-04-2003'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '<div class="blood-body d-flex align-items-center">'
+            temp += '<div class="StdHeading pl-1">Blood group:'
+            temp += '</div>'
+            temp += '<div class="StdVal pl-1">B+'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '<div class="row3">'
+            temp += '<div class="main-body flex-wrap d-flex">'
+            temp += '<div class="d-flex w-100 dob-body">'
+            temp += '<div class="StdHeading pl-1">Address:'
+            temp += '</div>'
+            temp += '<div class="StdVal pl-1">Malad West Mumbai 95'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '<div class="row4">'
+            temp += '<div class="main-body flex-wrap d-flex">'
+            temp += '<div class="d-flex dob-body align-items-center">'
+            temp += '<div class="StdHeading pl-1">Phone no :'
+            temp += '</div>'
+            temp += '<div class="StdVal pl-1">8828045311'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '<div class="d-flex dob-body align-items-center">'
+            temp += '<div class="StdHeading pl-1">DOI :'
+            temp += '</div>'
+            temp += '<div class="StdVal pl-1">16/05/2022'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '<div class="row5">'
+            temp += '<div class="main-body flex-wrap d-flex">'
+            temp += '<div class="d-flex dob-body align-items-center">'
+            temp += '<div class="StdHeading pl-1">Email :'
+            temp += '</div>'
+            temp += '<div class="StdVal pl-1">khizarshiakh2922@gmail.com'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            temp += '</div>'
+            document.getElementById('approvestudent').innerHTML += temp
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
