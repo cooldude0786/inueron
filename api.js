@@ -35,4 +35,10 @@ apiRoutes.get('/calldetails',async (req,res)=>{
     res.send(temp)
 })
 
-module.exports = apiRoutes
+apiRoutes.get('/send',async (req,res)=>{
+    let temp =await dbobj.GetOneDetails()
+    // res.send(temp)
+    console.log(temp)
+})
+
+module.exports = apiRoutes 

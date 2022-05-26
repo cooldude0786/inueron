@@ -142,7 +142,8 @@
                 </div>
             </div>
             <div id="approvestudent" class="approvestudent justify-content-around col-sm-12 d-flex flex-wrap">
-                <!-- <div class="studentcard col-sm-4 p-2">
+                <!-- <div class="0 studentcard col-sm-4 p-2 .position-relative" id="abc" onclick='popup(this)'>
+                    <input class="form-check-input position-absolute Pr " type="checkbox" value="" id="0check" checked>
                     <div class="outer-body p-1">
                         <div class="row1">
                             <div class="main-body flex-wrap d-flex">
@@ -197,6 +198,68 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="0 studentcard col-sm-4 p-2 .position-relative" id="abc" onclick='popup(this)'>
+                    <input class="form-check-input position-absolute Pr " type="checkbox" value="" id="0check" checked>
+                    <div class="outer-body p-1">
+                        <div class="row1">
+                            <div class="main-body flex-wrap d-flex">
+                                <div class="d-flex name-body align-items-center">
+                                    <div class="StdHeading pl-1">Name:</div>
+                                    <div class="StdVal pl-1">Khizar Shaikh</div>
+                                </div>
+                                <div class="roll-body d-flex align-items-center">
+                                    <div class="StdHeading pl-1">RollNo.</div>
+                                    <div class="StdVal pl-1">FS19IF034</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row2">
+                            <div class="main-body flex-wrap d-flex">
+                                <div class="d-flex dob-body align-items-center">
+                                    <div class="StdHeading pl-1">Dob :-</div>
+                                    <div class="StdVal pl-1">29-04-2003</div>
+                                </div>
+                                <div class="blood-body d-flex align-items-center">
+                                    <div class="StdHeading pl-1">Blood group:</div>
+                                    <div class="StdVal pl-1">B+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row3">
+                            <div class="main-body flex-wrap d-flex">
+                                <div class="d-flex w-100 dob-body">
+                                    <div class="StdHeading pl-1">Address:</div>
+                                    <div class="StdVal pl-1">Malad West Mumbai 95</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row4">
+                            <div class="main-body flex-wrap d-flex">
+                                <div class="d-flex dob-body align-items-center">
+                                    <div class="StdHeading pl-1">Phone no :</div>
+                                    <div class="StdVal pl-1">8828045311</div>
+                                </div>
+                                <div class="d-flex dob-body align-items-center">
+                                    <div class="StdHeading pl-1">DOI :</div>
+                                    <div class="StdVal pl-1">16/05/2022</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row5">
+                            <div class="main-body flex-wrap d-flex">
+                                <div class="d-flex dob-body align-items-center">
+                                    <div class="StdHeading pl-1">Email :</div>
+                                    <div class="StdVal pl-1">khizarshiakh2922@gmail.com</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="col-sm-12 d-flex justify-content-center">
+                    <div class="btn-primary btn" id="AddStudent">
+                       Add Student
+                   </div>
                 </div> -->
             </div>
         </div>
@@ -276,6 +339,7 @@
     </div>
     </div>
     <script>
+        let addStudent = []
         function $1(param1) {
             return document.getElementById(param1)
         }
@@ -358,7 +422,32 @@
             $1("updateteacher").classList.remove("d-flex")
             $1("approvestudent").classList.remove("d-none")
             $1("approvestudent").classList.add("d-flex")
-            addToHtml()
+            
+            $.get('http://localhost:4240/api/calldetails', function (data) {
+                console.log(data, "this is " + data['length'])
+                $1('approvestudent').innerHTML = ''
+                let temp = 0,temp1;
+                for (len in data) {
+                    console.log(data[len]['_id'], 'asda')
+                    addToHtml(
+                        data[len]['_id'],
+                        data[len]['name'],
+                        data[len]['dob'],
+                        data[len]['bloodgr'],
+                        data[len]['address'],
+                        data[len]['Phone_no'],
+                        data[len]['email'],
+                        data[len]['rollno'],
+                        temp)
+                    temp++;
+                }
+            temp1 = `<div class="col-sm-12 d-flex justify-content-center">`
+            temp1 += `<div class="btn-primary btn" onclick=sendarr() id="AddStudent">`
+            temp1 += `Add Student`
+            temp1 += `</div>`
+            temp1 += `</div>`
+            document.getElementById('approvestudent').innerHTML += temp1
+            })
         })
         function CardContain(This) {
             $("#exampleModal").modal();
@@ -367,86 +456,109 @@
             // console.log(document.getElementsByTagName("NameOfTecaher")['0']['innerText'])
             console.log(This.getElementsByTagName("NameOfTecaher")[0]['innerText'])
         }
-        function addToHtml() {
+        function addToHtml(_id, name, dob, bloodgr, address, Phone_no, email, rollno, idNu) {
             let temp;
-            temp = '<div class="studentcard col-sm-4 p-2">'
-            temp += '<div class="outer-body p-1">'
-            temp += '<div class="row1">'
-            temp += '<div class="main-body flex-wrap d-flex">'
-            temp += '<div class="d-flex name-body align-items-center">'
-            temp += '<div class="StdHeading pl-1">Name:'
-            temp += '</div>'
-            temp += '<div class="StdVal pl-1">Khizar Shaikh'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '<div class="roll-body d-flex align-items-center">'
-            temp += '<div class="StdHeading pl-1">RollNo.'
-            temp += '</div>'
-            temp += '<div class="StdVal pl-1">FS19IF034'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '<div class="row2">'
-            temp += '<div class="main-body flex-wrap d-flex">'
-            temp += '<div class="d-flex dob-body align-items-center">'
-            temp += '<div class="StdHeading pl-1">Dob :-'
-            temp += '</div>'
-            temp += '<div class="StdVal pl-1">29-04-2003'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '<div class="blood-body d-flex align-items-center">'
-            temp += '<div class="StdHeading pl-1">Blood group:'
-            temp += '</div>'
-            temp += '<div class="StdVal pl-1">B+'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '<div class="row3">'
-            temp += '<div class="main-body flex-wrap d-flex">'
-            temp += '<div class="d-flex w-100 dob-body">'
-            temp += '<div class="StdHeading pl-1">Address:'
-            temp += '</div>'
-            temp += '<div class="StdVal pl-1">Malad West Mumbai 95'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '<div class="row4">'
-            temp += '<div class="main-body flex-wrap d-flex">'
-            temp += '<div class="d-flex dob-body align-items-center">'
-            temp += '<div class="StdHeading pl-1">Phone no :'
-            temp += '</div>'
-            temp += '<div class="StdVal pl-1">8828045311'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '<div class="d-flex dob-body align-items-center">'
-            temp += '<div class="StdHeading pl-1">DOI :'
-            temp += '</div>'
-            temp += '<div class="StdVal pl-1">16/05/2022'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '<div class="row5">'
-            temp += '<div class="main-body flex-wrap d-flex">'
-            temp += '<div class="d-flex dob-body align-items-center">'
-            temp += '<div class="StdHeading pl-1">Email :'
-            temp += '</div>'
-            temp += '<div class="StdVal pl-1">khizarshiakh2922@gmail.com'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
-            temp += '</div>'
+            temp = `<div class="${idNu} studentcard col-sm-4 p-2 position-relative" onclick='popup(this)' id=${_id}>`
+            temp += `<input class="form-check-input position-absolute Pr " type="checkbox" value="" id="${idNu}check">`
+            temp += `<div class="outer-body p-1">`
+            temp += `<div class="row1">`
+            temp += `<div class="main-body flex-wrap d-flex">`
+            temp += `<div class="d-flex name-body align-items-center">`
+            temp += `<div class="StdHeading pl-1">Name:`
+            temp += `</div>`
+            temp += `<div class="StdVal pl-1">${name}`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `<div class="roll-body d-flex align-items-center">`
+            temp += `<div class="StdHeading pl-1">RollNo.`
+            temp += `</div>`
+            temp += `<div class="StdVal pl-1">${rollno}`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `<div class="row2">`
+            temp += `<div class="main-body flex-wrap d-flex">`
+            temp += `<div class="d-flex dob-body align-items-center">`
+            temp += `<div class="StdHeading pl-1">Dob :-`
+            temp += `</div>`
+            temp += `<div class="StdVal pl-1">${dob}`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `<div class="blood-body d-flex align-items-center">`
+            temp += `<div class="StdHeading pl-1">Blood group:`
+            temp += `</div>`
+            temp += `<div class="StdVal pl-1">${bloodgr}`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `<div class="row3">`
+            temp += `<div class="main-body flex-wrap d-flex">`
+            temp += `<div class="d-flex w-100 dob-body">`
+            temp += `<div class="StdHeading pl-1">Address:`
+            temp += `</div>`
+            temp += `<div class="StdVal pl-1">${address}`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `<div class="row4">`
+            temp += `<div class="main-body flex-wrap d-flex">`
+            temp += `<div class="d-flex dob-body align-items-center">`
+            temp += `<div class="StdHeading pl-1">Phone no :`
+            temp += `</div>`
+            temp += `<div class="StdVal pl-1">${Phone_no}`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `<div class="d-flex dob-body align-items-center">`
+            temp += `<div class="StdHeading pl-1">DOI :`
+            temp += `</div>`
+            temp += `<div class="StdVal pl-1">16/05/2022`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `<div class="row5">`
+            temp += `<div class="main-body flex-wrap d-flex">`
+            temp += `<div class="d-flex dob-body align-items-center">`
+            temp += `<div class="StdHeading pl-1">Email :`
+            temp += `</div>`
+            temp += `<div class="StdVal pl-1">${email}`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            temp += `</div>`
+            
             document.getElementById('approvestudent').innerHTML += temp
         }
+        function popup(a) {
+            // console.log(a.classList[0])
+            let temp = document.getElementById(a.classList[0] + "check")
+            // console.log(temp)
+            if (temp.checked) {
+                document.getElementById(a.classList[0] + "check").checked = false
+                let temp2 = addStudent.indexOf(a.classList[0] + "check")
+                addStudent.splice(temp2, 1)
+            }
+            else {
+                addStudent.push(a.id)
+                document.getElementById(a.classList[0] + "check").checked = true
+            }
+            console.log(addStudent)
+        }
+        function sendarr(){
+            console.log("press")
+            $.get('http://localhost:4240/api/send?data='+addStudent, function (data) {
+            console.log(data)
+        })  
+        }
     </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>

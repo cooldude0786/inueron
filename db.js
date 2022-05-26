@@ -60,6 +60,14 @@ MongoClient.connect(uri, { useNewUrlParser: true }, (error, client) => {
 
     })
   }
-
+  exports.GetOneDetails = () =>{
+    return new Promise((resolve,reject)=>{
+      db.collection('studentApprove').findOne({}, function(err, result) {
+        if (err) throw err;
+        console.log("get one")
+        resolve(result)
+      })
+    })
+  }
 });
 //   })
