@@ -440,6 +440,8 @@
                         data[len]['rollno'],
                         temp)
                     temp++;
+                    addStudent.push(data[len])
+                    console.log('addstudent',addStudent)
                 }
             temp1 = `<div class="col-sm-12 d-flex justify-content-center">`
             temp1 += `<div class="btn-primary btn" onclick=sendarr() id="AddStudent">`
@@ -459,7 +461,7 @@
         function addToHtml(_id, name, dob, bloodgr, address, Phone_no, email, rollno, idNu) {
             let temp;
             temp = `<div class="${idNu} studentcard col-sm-4 p-2 position-relative" onclick='popup(this)' id=${_id}>`
-            temp += `<input class="form-check-input position-absolute Pr " type="checkbox" value="" id="${idNu}check">`
+            temp += `<input class="form-check-input position-absolute Pr " type="checkbox" value="" id="${idNu}check" checked>`
             temp += `<div class="outer-body p-1">`
             temp += `<div class="row1">`
             temp += `<div class="main-body flex-wrap d-flex">`
@@ -541,17 +543,18 @@
             if (temp.checked) {
                 document.getElementById(a.classList[0] + "check").checked = false
                 let temp2 = addStudent.indexOf(a.classList[0] + "check")
-                addStudent.splice(temp2, 1)
+                // addStudent.splice(temp2, 1)
             }
             else {
-                addStudent.push(a.id)
+                // addStudent.push(a.id)
                 document.getElementById(a.classList[0] + "check").checked = true
             }
             console.log(addStudent)
         }
         function sendarr(){
-            console.log("press")
-            $.get('http://localhost:4240/api/send?data='+addStudent, function (data) {
+            let temp = JSON.stringify(addStudent)
+            console.log("press add",temp)
+            $.get('http://localhost:4240/api/send?data='+temp, function (data) {
             console.log(data)
         })  
         }

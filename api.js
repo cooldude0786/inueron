@@ -36,9 +36,10 @@ apiRoutes.get('/calldetails',async (req,res)=>{
 })
 
 apiRoutes.get('/send',async (req,res)=>{
-    let temp =await dbobj.GetOneDetails()
-    // res.send(temp)
-    console.log(temp)
+    // let temp = await dbobj.GetOneDetails(req.query['data'].split(","))
+    console.log('at api req',req.query)
+    res.send('temp')
+    // console.log("at api  ",temp)
 })
-
+//  sdds
 module.exports = apiRoutes 

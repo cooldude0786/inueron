@@ -1,5 +1,5 @@
 const res = require("express/lib/response");
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const Realm = require('realm-web');
 const uri = "mongodb+srv://khizar:Khizar2922@cluster0.ijkkm.mongodb.net/?retryWrites=true&w=majority";
 const databaseName = "iNueron";
@@ -62,9 +62,9 @@ MongoClient.connect(uri, { useNewUrlParser: true }, (error, client) => {
   }
   exports.GetOneDetails = () =>{
     return new Promise((resolve,reject)=>{
-      db.collection('studentApprove').findOne({}, function(err, result) {
+      db.collection('studentApprove').findOne({_id : ObjectId('628dd6a903a8a99cc242e751')}, function(err, result) {
         if (err) throw err;
-        console.log("get one")
+        console.log("get one",result)
         resolve(result)
       })
     })
