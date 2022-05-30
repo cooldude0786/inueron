@@ -60,13 +60,15 @@ MongoClient.connect(uri, { useNewUrlParser: true }, (error, client) => {
 
     })
   }
-  exports.GetOneDetails = () =>{
+  exports.AddApproveStudent = (obj) =>{
     return new Promise((resolve,reject)=>{
-      db.collection('studentApprove').findOne({_id : ObjectId('628dd6a903a8a99cc242e751')}, function(err, result) {
+      obj = JSON.parse(obj)
+      db.collection('Student').insertMany(obj,(err, result)=>{
         if (err) throw err;
-        console.log("get one",result)
-        resolve(result)
-      })
+      console.log("Number of documents inserted: " + result.insertedCount);
+      resolve('done')
+      });
+    // console.log(typeof JSON.parse(obj))
     })
   }
 });

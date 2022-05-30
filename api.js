@@ -36,9 +36,9 @@ apiRoutes.get('/calldetails',async (req,res)=>{
 })
 
 apiRoutes.get('/send',async (req,res)=>{
-    // let temp = await dbobj.GetOneDetails(req.query['data'].split(","))
+    let temp = await dbobj.AddApproveStudent(req.query['data'])
     console.log('at api req',req.query)
-    res.send('temp')
+    res.send(req.query)
     // console.log("at api  ",temp)
 })
 //  sdds

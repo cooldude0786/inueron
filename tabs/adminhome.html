@@ -339,7 +339,7 @@
     </div>
     </div>
     <script>
-        let addStudent = []
+        let addStudent = [],AllAddStudentData=[]
         function $1(param1) {
             return document.getElementById(param1)
         }
@@ -417,6 +417,7 @@
             $1("approvestudent").classList.remove("d-flex")
         });
         $("#ApproveStudent").click(() => {
+            addStudent = [],AllAddStudentData =[]
             $1("teacher").classList.add("d-none")
             $1("updateteacher").classList.add("d-none")
             $1("updateteacher").classList.remove("d-flex")
@@ -428,7 +429,7 @@
                 $1('approvestudent').innerHTML = ''
                 let temp = 0,temp1;
                 for (len in data) {
-                    console.log(data[len]['_id'], 'asda')
+                    // console.log(data[len]['_id'], 'asda')
                     addToHtml(
                         data[len]['_id'],
                         data[len]['name'],
@@ -440,8 +441,9 @@
                         data[len]['rollno'],
                         temp)
                     temp++;
-                    addStudent.push(data[len])
-                    console.log('addstudent',addStudent)
+                    addStudent.push(data[len]['_id'])
+                    AllAddStudentData.push(data[len])
+                    console.log('AllAddStudentData',AllAddStudentData)
                 }
             temp1 = `<div class="col-sm-12 d-flex justify-content-center">`
             temp1 += `<div class="btn-primary btn" onclick=sendarr() id="AddStudent">`
@@ -542,20 +544,33 @@
             // console.log(temp)
             if (temp.checked) {
                 document.getElementById(a.classList[0] + "check").checked = false
-                let temp2 = addStudent.indexOf(a.classList[0] + "check")
-                // addStudent.splice(temp2, 1)
+                let temp2 = addStudent.indexOf(a.id)
+                console.log('----->',temp2)
+                addStudent.splice(temp2, 1)
             }
             else {
-                // addStudent.push(a.id)
+                addStudent.push(a.id)
                 document.getElementById(a.classList[0] + "check").checked = true
             }
             console.log(addStudent)
         }
         function sendarr(){
-            let temp = JSON.stringify(addStudent)
-            console.log("press add",temp)
+            let temp=[];
+            for(i in AllAddStudentData){
+                for(y in addStudent){
+                    if(AllAddStudentData[i]['_id'].includes(addStudent[y])){
+                        temp.push(AllAddStudentData[i])
+                        addStudent.splice(y,0)
+                }
+                    // console.log(AllAddStudentData)
+                    // console.log('hi -->',AllAddStudentData[i]['_id'])
+                }        
+            }
+            // console.log(temp)
+            // console.log("press add",temp)
+            temp = JSON.stringify(temp)
             $.get('http://localhost:4240/api/send?data='+temp, function (data) {
-            console.log(data)
+            console.log(data['data'])
         })  
         }
     </script>
