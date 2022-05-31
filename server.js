@@ -18,7 +18,8 @@ http.listen(port, '0.0.0.0', () =>
 //     }
 //     dbobj.user_ins(ins);
 //     res.send("user insert") 
-// })
+// }) 
+//
 
 app.use("/",url)
 
