@@ -34,21 +34,21 @@ apiRoutes.get('/calldetails',async (req,res)=>{
     let temp =await dbobj.getAllAproveStudent()
     res.send(temp)
 })
+apiRoutes.get('/getTeacher',async (req,res)=>{
+    let temp =await dbobj.getAllTeacher()
+    res.send(temp)
+})
 
 apiRoutes.get('/send',async (req,res)=>{
     let data = JSON.parse(req.query['data'])
-    // let temp = await dbobj.AddApproveStudent(req.query['data'])
-    // let temp = await dbobj.DeleteApprove(req.query['data'])
-    // console.log('at api req',req.query)
-    // console.log(data)
-    let temp=[]
+    let data1 = await dbobj.AddApproveStudent(req.query['data']),data2=[]
+    data1 = JSON.parse(data1)
     for (element in data) {
-        // console.log("at api  "+element,data[element])
+        console.log("at api  "+element,data[element])
         let temp1 = await dbobj.DeleteApprove(data[element]['_id'])
-        temp.push(temp1)
+        data2.push(temp1)
     }
-    console.log('at api',temp)
-    await res.send(temp)
+    await res.send({data1,data2})
 })
 //  sdds
 module.exports = apiRoutes 

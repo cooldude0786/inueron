@@ -287,39 +287,39 @@
                         <div class="d-flex justify-content-around flex-wrap py-1">
                             <div>
                                 <span id="felidname" class="spanfiled">Name</span>
-                                <input type="text" name="name" id="updatename" class="form-control" placeholder="name"
+                                <input type="text" name="name" id="modalupdatename" class="form-control" placeholder="name"
                                     aria-label="Enter name">
                             </div>
 
                             <div>
                                 <span id="felidDepartement" class="spanfiled">Departement</span>
-                                <input type="text" name="Departement" id="updateDepartement" class="form-control"
+                                <input type="text" name="Departement" id="modalupdateDepartement" class="form-control"
                                     placeholder="Departement" aria-label="Enter Departement">
                             </div>
                         </div>
                         <div class="d-flex justify-content-around flex-wrap py-1">
                             <div>
                                 <span id="felidSubject" class="spanfiled">Subject</span>
-                                <input type="text" name="Subject" id="updateSubject" class="form-control"
+                                <input type="text" name="Subject" id="modalupdateSubject" class="form-control"
                                     placeholder="Subject" aria-label="Enter Subject">
                             </div>
 
                             <div>
                                 <span id="felidID" class="spanfiled">ID</span>
-                                <input type="text" name="ID" id="updateID" class="form-control" placeholder="id"
+                                <input type="text" name="ID" id="modalupdateID" class="form-control" placeholder="id"
                                     aria-label="Enter id">
                             </div>
                         </div>
                         <div class="d-flex justify-content-around flex-wrap py-1">
                             <div>
                                 <span id="felidPhone_no" class="spanfiled">Phone no.</span>
-                                <input type="number" maxlength="10" minlength="10" name="Phone_no" id="Phone_no"
+                                <input type="number" maxlength="10" minlength="10" name="Phone_no" id="modalPhone_no"
                                     class="form-control" placeholder="Phone no." aria-label="Enter Phone no.">
                             </div>
 
                             <div>
                                 <span id="felidaddress" class="spanfiled">Address</span>
-                                <input type="text" name="Address" id="updateaddress" class="form-control"
+                                <input type="text" name="Address" id="modalupdateaddress" class="form-control"
                                     placeholder="address" aria-label="Enter Address">
                             </div>
                         </div>
@@ -339,7 +339,7 @@
     </div>
     </div>
     <script>
-        let addStudent = [],AllAddStudentData=[]
+        let addStudent = [], AllAddStudentData = [], teacherData = []
         function $1(param1) {
             return document.getElementById(param1)
         }
@@ -415,22 +415,33 @@
             $1("updateteacher").classList.remove("d-none")
             $1("approvestudent").classList.add("d-none")
             $1("approvestudent").classList.remove("d-flex")
+            $.get('http://localhost:4240/api/getTeacher', function (data) {
+                let i=0;
+            document.getElementById('updateteacher').innerHTML = ''
+                teacherData = (data)
+                teacherData.forEach(element => {
+                    addTeacher(element,i)
+                    console.log(element)
+                    i++
+                });
+                console.log(teacherData)
+            })
         });
         $("#ApproveStudent").click(() => {
-            addStudent = [],AllAddStudentData =[]
+            addStudent = [], AllAddStudentData = []
             $1("teacher").classList.add("d-none")
             $1("updateteacher").classList.add("d-none")
             $1("updateteacher").classList.remove("d-flex")
             $1("approvestudent").classList.remove("d-none")
             $1("approvestudent").classList.add("d-flex")
-            
+            // calling student details||!
             $.get('http://localhost:4240/api/calldetails', function (data) {
                 console.log(data, "this is " + data['length'])
                 $1('approvestudent').innerHTML = ''
-                let temp = 0,temp1;
+                let temp = 0, temp1;
                 for (len in data) {
                     // console.log(data[len]['_id'], 'asda')
-                    addToHtml(
+                    addAllStudentToHtml(
                         data[len]['_id'],
                         data[len]['name'],
                         data[len]['dob'],
@@ -443,24 +454,17 @@
                     temp++;
                     addStudent.push(data[len]['_id'])
                     AllAddStudentData.push(data[len])
-                    console.log('AllAddStudentData',AllAddStudentData)
+                    console.log('AllAddStudentData', AllAddStudentData)
                 }
-            temp1 = `<div class="col-sm-12 d-flex justify-content-center">`
-            temp1 += `<div class="btn-primary btn" onclick=sendarr() id="AddStudent">`
-            temp1 += `Add Student`
-            temp1 += `</div>`
-            temp1 += `</div>`
-            document.getElementById('approvestudent').innerHTML += temp1
+                temp1 = `<div class="col-sm-12 d-flex justify-content-center">`
+                temp1 += `<div class="btn-primary btn" onclick=sendarr() id="AddStudent">`
+                temp1 += `Add Student`
+                temp1 += `</div>`
+                temp1 += `</div>`
+                document.getElementById('approvestudent').innerHTML += temp1
             })
         })
-        function CardContain(This) {
-            $("#exampleModal").modal();
-            // console.log(arguments[0])
-            // alert("ed")
-            // console.log(document.getElementsByTagName("NameOfTecaher")['0']['innerText'])
-            console.log(This.getElementsByTagName("NameOfTecaher")[0]['innerText'])
-        }
-        function addToHtml(_id, name, dob, bloodgr, address, Phone_no, email, rollno, idNu) {
+        function addAllStudentToHtml(_id, name, dob, bloodgr, address, Phone_no, email, rollno, idNu) {
             let temp;
             temp = `<div class="${idNu} studentcard col-sm-4 p-2 position-relative" onclick='popup(this)' id=${_id}>`
             temp += `<input class="form-check-input position-absolute Pr " type="checkbox" value="" id="${idNu}check" checked>`
@@ -535,43 +539,86 @@
             temp += `</div>`
             temp += `</div>`
             temp += `</div>`
-            
+
             document.getElementById('approvestudent').innerHTML += temp
         }
         function popup(a) {
-            // console.log(a.classList[0])
             let temp = document.getElementById(a.classList[0] + "check")
-            // console.log(temp)
             if (temp.checked) {
                 document.getElementById(a.classList[0] + "check").checked = false
                 let temp2 = addStudent.indexOf(a.id)
-                console.log('----->',temp2)
                 addStudent.splice(temp2, 1)
             }
             else {
                 addStudent.push(a.id)
                 document.getElementById(a.classList[0] + "check").checked = true
             }
-            console.log(addStudent)
         }
-        function sendarr(){
-            let temp=[];
-            for(i in AllAddStudentData){
-                for(y in addStudent){
-                    if(AllAddStudentData[i]['_id'].includes(addStudent[y])){
-                        temp.push(AllAddStudentData[i])
-                        addStudent.splice(y,0)
-                }
-                    // console.log(AllAddStudentData)
-                    // console.log('hi -->',AllAddStudentData[i]['_id'])
-                }        
+        function sendarr() {
+            if (AllAddStudentData.length <= 0) {
+                return
             }
-            // console.log(temp)
-            // console.log("press add",temp)
+            let temp = [];
+            for (i in AllAddStudentData) {
+                for (y in addStudent) {
+                    if (AllAddStudentData[i]['_id'].includes(addStudent[y])) {
+                        temp.push(AllAddStudentData[i])
+                        addStudent.splice(y, 0)
+                    }
+                }
+            }
             temp = JSON.stringify(temp)
-            $.get('http://localhost:4240/api/send?data='+temp, function (data) {
-            console.log(data)
-        })  
+            $.get('http://localhost:4240/api/send?data=' + temp, function (data) {
+                studendAckno(data)
+            })
+        }
+        async function studendAckno(data) {
+            let temp1 = data['data1'], temp2 = data['data2'], decision;
+            if (temp1['acknowledged'] == true)
+                document.getElementById('ApproveStudent').click()
+        }
+        function addTeacher(data,count) {
+            let temp;
+            temp = `  <div class="utcard  p-2 rounded col-sm-3">`
+            temp += `  <div class="p-1 rounded bcblack col-sm-12">`
+            temp += `  <div id="${data['_id']}" onclick="CardContain(this)"class="${count} d-flex flex-column bcwhite justify-content-between col-sm-12 ffserif">`
+            temp += `  <div class="d-flex p-1 col-sm-12">`
+            temp += `  <div>Name: </div>`
+            temp += `  <div>`
+            temp += `  <NameOfTecaher>${data['name']}</NameOfTecaher>`
+            temp += `  </div>`
+            temp += `  </div>`
+            temp += `  <div class="d-flex p-1 col-sm-12">`
+            temp += `  <div>Id :</div>`
+            temp += `  <div>`
+            temp += `  <IdOfTeacher>${data['ID']}</IdOfTeacher>`
+            temp += `  </div>`
+            temp += `  </div>`
+            temp += `  <div class="d-flex p-1 col-sm-12">`
+            temp += `  <div>D.T :-</div>`
+            temp += `  <div>`
+            temp += `  <NameOfDepartment>${data['departement']}</NameOfDepartment>`
+            temp += `  </div>`
+            temp += `  </div>`
+            temp += `  <div class="d-flex p-1 col-sm-12">`
+            temp += `  <div>Subject :</div>`
+            temp += `  <div>${data['subject']}</div>`
+            temp += `  </div>`
+            temp += `  </div>`
+            temp += `  </div>`
+            temp += `  </div>`
+            document.getElementById('updateteacher').innerHTML += temp
+        }
+
+        function CardContain(This) {
+            $("#exampleModal").modal();
+            console.log(This.getElementsByTagName("NameOfTecaher")[0]['innerText'],This.classList[0])
+            document.getElementById('modalupdatename').value =teacherData[This.classList[0]]['name'] 
+            document.getElementById('modalupdateDepartement').value =teacherData[This.classList[0]]['departement'] 
+            document.getElementById('modalupdateSubject').value =teacherData[This.classList[0]]['subject'] 
+            document.getElementById('modalupdateID').value =teacherData[This.classList[0]]['ID'] 
+            document.getElementById('modalPhone_no').value =teacherData[This.classList[0]]['phone_no'] 
+            document.getElementById('modalupdateaddress').value =teacherData[This.classList[0]]['address'] 
         }
     </script>
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"
