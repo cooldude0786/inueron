@@ -287,8 +287,8 @@
                         <div class="d-flex justify-content-around flex-wrap py-1">
                             <div>
                                 <span id="felidname" class="spanfiled">Name</span>
-                                <input type="text" name="name" id="modalupdatename" class="form-control" placeholder="name"
-                                    aria-label="Enter name">
+                                <input type="text" name="name" id="modalupdatename" class="form-control"
+                                    placeholder="name" aria-label="Enter name">
                             </div>
 
                             <div>
@@ -343,10 +343,36 @@
         function $1(param1) {
             return document.getElementById(param1)
         }
+        $("#modalbtndelete").click(()=>{
+            let position = parseInt(sessionStorage.getItem("objPosition"))
+            $.get(`http://localhost:4240/api/deleteTeacher?data=${JSON.stringify(teacherData[position]['_id'])}`, function (data) {
+                // console.log("from backhand",data)
+                if(data['modifiedCount']==1){
+                    console.log('done')
+                    $('#UpdateTeacher').click()
+                }
+            })
+            console.log('clickd elehedy')
+        })
         $1("modalbtn").addEventListener("click", () => {
-            console.log("a")
+            let position = parseInt(sessionStorage.getItem("objPosition"))
+            console.log('typeof position', typeof position)
+            teacherData[position]['name'] = document.getElementById('modalupdatename').value
+            teacherData[position]['departement'] = document.getElementById('modalupdateDepartement').value
+            teacherData[position]['subject'] = document.getElementById('modalupdateSubject').value
+            teacherData[position]['ID'] = document.getElementById('modalupdateID').value
+            teacherData[position]['phone_no'] = document.getElementById('modalPhone_no').value
+            teacherData[position]['address'] = document.getElementById('modalupdateaddress').value
+            console.log('value ffrom teacher data', teacherData[position])
+            $.get(`http://localhost:4240/api/saveTeacher?data=${JSON.stringify(teacherData[position])}`, function (data) {
+                // console.log("from backhand",data)
+                if(data['modifiedCount']==1){
+                    console.log('done')
+                    $('#UpdateTeacher').click()
+                }
+            })
             $('#exampleModal').modal('hide');
-
+            sessionStorage.removeItem("objPosition");
         })
         $('#HomePage').click(() => {
             window.location.href = "/"
@@ -416,15 +442,15 @@
             $1("approvestudent").classList.add("d-none")
             $1("approvestudent").classList.remove("d-flex")
             $.get('http://localhost:4240/api/getTeacher', function (data) {
-                let i=0;
-            document.getElementById('updateteacher').innerHTML = ''
+                let i = 0;
+                document.getElementById('updateteacher').innerHTML = ''
                 teacherData = (data)
                 teacherData.forEach(element => {
-                    addTeacher(element,i)
-                    console.log(element)
+                    addTeacher(element, i)
+                    // console.log(element)
                     i++
                 });
-                console.log(teacherData)
+                // console.log(teacherData)
             })
         });
         $("#ApproveStudent").click(() => {
@@ -577,7 +603,7 @@
             if (temp1['acknowledged'] == true)
                 document.getElementById('ApproveStudent').click()
         }
-        function addTeacher(data,count) {
+        function addTeacher(data, count) {
             let temp;
             temp = `  <div class="utcard  p-2 rounded col-sm-3">`
             temp += `  <div class="p-1 rounded bcblack col-sm-12">`
@@ -611,14 +637,17 @@
         }
 
         function CardContain(This) {
+            sessionStorage.setItem("objPosition", This.classList[0]);
             $("#exampleModal").modal();
-            console.log(This.getElementsByTagName("NameOfTecaher")[0]['innerText'],This.classList[0])
-            document.getElementById('modalupdatename').value =teacherData[This.classList[0]]['name'] 
-            document.getElementById('modalupdateDepartement').value =teacherData[This.classList[0]]['departement'] 
-            document.getElementById('modalupdateSubject').value =teacherData[This.classList[0]]['subject'] 
-            document.getElementById('modalupdateID').value =teacherData[This.classList[0]]['ID'] 
-            document.getElementById('modalPhone_no').value =teacherData[This.classList[0]]['phone_no'] 
-            document.getElementById('modalupdateaddress').value =teacherData[This.classList[0]]['address'] 
+            //This.classList[0] will give the position of in which teacher data is store in teacherData
+            // console.log(This.getElementsByTagName("NameOfTecaher")[0]['innerText'],This.classList[0])
+            document.getElementById('modalupdatename').value = teacherData[This.classList[0]]['name']
+            document.getElementById('modalupdateDepartement').value = teacherData[This.classList[0]]['departement']
+            document.getElementById('modalupdateSubject').value = teacherData[This.classList[0]]['subject']
+            document.getElementById('modalupdateID').value = teacherData[This.classList[0]]['ID']
+            document.getElementById('modalPhone_no').value = teacherData[This.classList[0]]['phone_no']
+            document.getElementById('modalupdateaddress').value = teacherData[This.classList[0]]['address']
+            // console.log(This.classList)
         }
     </script>
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"

@@ -97,5 +97,31 @@ MongoClient.connect(uri, { useNewUrlParser: true }, (error, client) => {
     })
   }
 
+
+  exports.updateTeacher = (query, values) => {
+    return new Promise((resolve, reject) => {
+      const options = { upsert: true };
+      // query = { _id: ObjectId('62973c579bab0552de9648b8')}
+      // values = {$set:{name:"khizar123",ID:'khiaxa'} }
+      console.log('at db')
+      db.collection("teacher").updateOne(query, values, options, function (err, result) {
+        if (err) console.log(err);
+        console.log(result);
+        resolve(result)
+      });
+      console.log(query, values)
+    })
+  }
+  exports.DeleteApproveTeacher = async (obj) => {
+    return new Promise((resolve, reject) => {
+      db.collection('teacher').deleteOne({ _id: ObjectId(obj) }, function (err, result) {
+        if (err)
+          console.log(err)
+        console.log('in delete',typeof obj);
+        resolve(result)
+      })
+
+    })
+    }
 });
 //   }) 
