@@ -93,6 +93,30 @@ body {
   font-size: 14px;
   font-family: monospace;
 }
-.Pr{
+.Pr {
   right: 10px;
+}
+.t-msg {
+  position: fixed;
+  top: 56px;
+  right: 20px ;
+  height: auto;
+  background-color: lightgreen;
+}
+.toast-body span {
+  font-family: "Oleo Script Swash Caps", cursive;
+  letter-spacing: 2px;
+  font-size: 19px;
+  color: #28a745;
+}
+.fade:not(.show) {
+  top: 30px;
+}
+/* .toast.hide {
+  display: none;
+  top: 100px;
+  transition: top 0.30s linear;
+} */
+.fade {
+  transition: opacity 0.15s linear, top 0.25s linear;
 }

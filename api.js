@@ -65,8 +65,21 @@ apiRoutes.get('/deleteTeacher',async(req,res)=>{
     let data = JSON.parse(req.query['data'])
     console.log(data,typeof data)
   let temp = await  dbobj.DeleteApproveTeacher(data.toString())
+  console.log('at api',temp)
     res.send(temp)
+})
+
+apiRoutes.get('/addteacher',async(req,res)=>{
+    let temp =[]
+    temp.push({name:req.query.name , departement:req.query.Departement,subject:req.query.Subject,
+    ID:req.query.ID,
+    phone_no:req.query.Phone_no,
+    address:req.query.Address,})
+    console.log('just call',temp)
+    // res.send("hi")
 })
 //  sdds
 module.exports = apiRoutes 
-// {"_id":{"$oid":"62973c579bab0552de9648b8"},"name":"KHizar Shaikh","ID":"FS19IF034","departement":"Information Technology","subject":"Math","address":"Malad West Mumbai","phone_no":"8828045311"}
+// {"_id":{"$oid":"62973c579bab0552de9648b8"},
+// name":"KHizar Shaikh","ID":"FS19IF034","departement":"Information Technology",
+// "subject":"Math","address":"Malad West Mumbai","phone_no":"8828045311"}

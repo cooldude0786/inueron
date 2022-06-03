@@ -7,8 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <!-- <script src="https://kit.fontawesome.com/c153436894.js" crossorigin="anonymous"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/c153436894.js" crossorigin="anonymous"></script> -->
+
     <script src="https://kit.fontawesome.com/c153436894.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="Asset/css/adminhome.css">
     <title>Admin Page</title>
 </head>
@@ -34,7 +41,7 @@
         </div>
         <div class="align-items-center d-flex justify-content-center mainbody" id="mainbody">
             <div id="teacher" class="teacher d-none p-2">
-                <form action="" method="post">
+                <form action="http://localhost:4240/api/addteacher" method="get">
                     <h2>Add Teacher</h2>
                     <hr class="dashed">
                     <div class="d-flex justify-content-around flex-wrap py-1">
@@ -337,6 +344,12 @@
         </div>
 
     </div>
+    <div role="alert" class="position-absolute toast hide t-msg" aria-live="assertive" aria-atomic="true" data-animation="true" id="toast"
+        data-autohide="true">
+        <div class="toast-body">
+            <span id="Toast-Message"> </span>
+        </div>
+    </div>
     </div>
     <script>
         let addStudent = [], AllAddStudentData = [], teacherData = []
@@ -345,14 +358,17 @@
         }
         $("#modalbtndelete").click(()=>{
             let position = parseInt(sessionStorage.getItem("objPosition"))
+            $('.toast').toast({ delay: 2000 });
             $.get(`http://localhost:4240/api/deleteTeacher?data=${JSON.stringify(teacherData[position]['_id'])}`, function (data) {
-                // console.log("from backhand",data)
-                if(data['modifiedCount']==1){
+                console.log("from backhand",data)
+                if(data['deletedCount']==1){
                     console.log('done')
+                    $1("Toast-Message").innerHTML = "Delete SuucessFully"
                     $('#UpdateTeacher').click()
+                    $('#toast').toast('show')
                 }
             })
-            console.log('clickd elehedy')
+            // console.log('clickd elehedy')
         })
         $1("modalbtn").addEventListener("click", () => {
             let position = parseInt(sessionStorage.getItem("objPosition"))
@@ -384,12 +400,14 @@
             let ID = document.getElementById("ID")
             let Phone_no = document.getElementById("Phone_no")
             let address = document.getElementById("address")
+            let temp = 0;
             if (name.value == "") {
                 $1("felidname").classList.add("error")
                 name.classList.add("errorinput")
             } else {
                 $1("felidname").classList.remove("error")
                 name.classList.remove("errorinput")
+                temp += 1
             }
             if (Departement.value == "") {
                 $1("felidDepartement").classList.add("error")
@@ -397,6 +415,7 @@
             } else {
                 $1("felidDepartement").classList.remove("error")
                 Departement.classList.remove("errorinput")
+                temp += 1
             }
             if (Subject.value == "") {
                 $1("felidSubject").classList.add("error")
@@ -404,6 +423,7 @@
             } else {
                 $1("felidSubject").classList.remove("error")
                 Subject.classList.remove("errorinput")
+                temp += 1
             }
             if (ID.value == "") {
                 $1("felidID").classList.add("error")
@@ -411,6 +431,7 @@
             } else {
                 $1("felidID").classList.remove("error")
                 ID.classList.remove("errorinput")
+                temp += 1
             }
             if (Phone_no.value == '') {
                 $1("felidPhone_no").classList.add("error")
@@ -418,6 +439,7 @@
             } else {
                 $1("felidPhone_no").classList.remove("error")
                 Phone_no.classList.remove("errorinput")
+                temp += 1
             }
             if (address.value == "") {
                 $1("felidaddress").classList.add("error")
@@ -425,8 +447,11 @@
             } else {
                 $1("felidaddress").classList.remove("error")
                 address.classList.remove("errorinput")
+                temp += 1
             }
-            return false
+            if(temp!=6){
+                return false
+            }
         });
         $('#Teacher').click(function () {
             $1("teacher").classList.remove("d-none")
@@ -578,6 +603,7 @@
             else {
                 addStudent.push(a.id)
                 document.getElementById(a.classList[0] + "check").checked = true
+                temp += 1
             }
         }
         function sendarr() {
