@@ -41,7 +41,8 @@
         </div>
         <div class="align-items-center d-flex justify-content-center mainbody" id="mainbody">
             <div id="teacher" class="teacher d-none p-2">
-                <form action="http://localhost:4240/api/addteacher" method="get">
+                <form action="" id="addteacher" method="get">
+                    <!-- http://localhost:4240/api/addteacher -->
                     <h2>Add Teacher</h2>
                     <hr class="dashed">
                     <div class="d-flex justify-content-around flex-wrap py-1">
@@ -344,8 +345,8 @@
         </div>
 
     </div>
-    <div role="alert" class="position-absolute toast hide t-msg" aria-live="assertive" aria-atomic="true" data-animation="true" id="toast"
-        data-autohide="true">
+    <div role="alert" class="position-absolute toast hide t-msg" aria-live="assertive" aria-atomic="true"
+        data-animation="true" id="toast" data-autohide="true">
         <div class="toast-body">
             <span id="Toast-Message"> </span>
         </div>
@@ -356,12 +357,12 @@
         function $1(param1) {
             return document.getElementById(param1)
         }
-        $("#modalbtndelete").click(()=>{
+        $("#modalbtndelete").click(() => {
             let position = parseInt(sessionStorage.getItem("objPosition"))
             $('.toast').toast({ delay: 2000 });
             $.get(`http://localhost:4240/api/deleteTeacher?data=${JSON.stringify(teacherData[position]['_id'])}`, function (data) {
-                console.log("from backhand",data)
-                if(data['deletedCount']==1){
+                console.log("from backhand", data)
+                if (data['deletedCount'] == 1) {
                     console.log('done')
                     $1("Toast-Message").innerHTML = "Delete SuucessFully"
                     $('#UpdateTeacher').click()
@@ -382,7 +383,7 @@
             console.log('value ffrom teacher data', teacherData[position])
             $.get(`http://localhost:4240/api/saveTeacher?data=${JSON.stringify(teacherData[position])}`, function (data) {
                 // console.log("from backhand",data)
-                if(data['modifiedCount']==1){
+                if (data['modifiedCount'] == 1) {
                     console.log('done')
                     $('#UpdateTeacher').click()
                 }
@@ -400,7 +401,7 @@
             let ID = document.getElementById("ID")
             let Phone_no = document.getElementById("Phone_no")
             let address = document.getElementById("address")
-            let temp = 0;
+            let temp = 0; url = '?'
             if (name.value == "") {
                 $1("felidname").classList.add("error")
                 name.classList.add("errorinput")
@@ -408,6 +409,7 @@
                 $1("felidname").classList.remove("error")
                 name.classList.remove("errorinput")
                 temp += 1
+                url += 'name=' + name.value
             }
             if (Departement.value == "") {
                 $1("felidDepartement").classList.add("error")
@@ -416,6 +418,7 @@
                 $1("felidDepartement").classList.remove("error")
                 Departement.classList.remove("errorinput")
                 temp += 1
+                url += '&departement=' + Departement.value
             }
             if (Subject.value == "") {
                 $1("felidSubject").classList.add("error")
@@ -424,6 +427,7 @@
                 $1("felidSubject").classList.remove("error")
                 Subject.classList.remove("errorinput")
                 temp += 1
+                url += '&subject=' + Subject.value
             }
             if (ID.value == "") {
                 $1("felidID").classList.add("error")
@@ -432,6 +436,7 @@
                 $1("felidID").classList.remove("error")
                 ID.classList.remove("errorinput")
                 temp += 1
+                url += '&ID=' + ID.value
             }
             if (Phone_no.value == '') {
                 $1("felidPhone_no").classList.add("error")
@@ -440,6 +445,7 @@
                 $1("felidPhone_no").classList.remove("error")
                 Phone_no.classList.remove("errorinput")
                 temp += 1
+                url += '&phone_no=' + Phone_no.value
             }
             if (address.value == "") {
                 $1("felidaddress").classList.add("error")
@@ -448,8 +454,28 @@
                 $1("felidaddress").classList.remove("error")
                 address.classList.remove("errorinput")
                 temp += 1
+                url += '&address=' + address.value
             }
-            if(temp!=6){
+            if (temp != 6) {
+                return false
+            } else {
+                console.log('submit form')
+                $.get(`http://localhost:4240/api/addteacher${url}`, function (data) {
+                    console.log(data)
+                    if (data.hasOwnProperty('insertedId')) {
+                        console.log(data)
+                        $('.toast').toast({ delay: 2000 });
+                        $1("Toast-Message").innerHTML = "insert it"
+                        // $('#UpdateTeacher').click()
+                        $('#toast').toast('show')
+                        // setTimeout((() => {
+                            // document.getElementById('ApproveStudent').click()
+                            $("#UpdateTeacher").click()
+                        // }), 2000)
+                    }
+                   else
+                    console.log('data dosent their')
+                })
                 return false
             }
         });

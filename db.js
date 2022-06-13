@@ -123,5 +123,19 @@ MongoClient.connect(uri, { useNewUrlParser: true }, (error, client) => {
 
     })
     }
+
+    exports.addTeacherStudent = async (value) =>{
+      return new Promise((resolve,reject)=>{
+        // console.log('at the db', value)
+        db.collection('teacher').insertOne(value, function (err, result) {
+          if (err) {
+            throw err
+          }
+          // console.log("")
+          // console.log(result)
+          resolve(result)
+        })
+      })
+    }
 });
 //   }) 

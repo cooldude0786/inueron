@@ -54,32 +54,78 @@ apiRoutes.get('/send', async (req, res) => {
 })
 apiRoutes.get('/saveTeacher', async (req, res) => {
     let data = JSON.parse(req.query['data'])
-    let myquery = { _id: ObjectId(''+data['_id']+'')};
+    let myquery = { _id: ObjectId('' + data['_id'] + '') };
     delete data._id
     let newvalues = { $set: data };
-    let temp = await dbobj.updateTeacher(myquery,newvalues)
+    let temp = await dbobj.updateTeacher(myquery, newvalues)
     // console.log(newvalues,myquery)
     res.send(temp)
 })
-apiRoutes.get('/deleteTeacher',async(req,res)=>{
+apiRoutes.get('/deleteTeacher', async (req, res) => {
     let data = JSON.parse(req.query['data'])
-    console.log(data,typeof data)
-  let temp = await  dbobj.DeleteApproveTeacher(data.toString())
-  console.log('at api',temp)
+    console.log(data, typeof data)
+    let temp = await dbobj.DeleteApproveTeacher(data.toString())
+    console.log('at api', temp)
     res.send(temp)
 })
 
-apiRoutes.get('/addteacher',async(req,res)=>{
-    let temp =[]
-    temp.push({name:req.query.name , departement:req.query.Departement,subject:req.query.Subject,
-    ID:req.query.ID,
-    phone_no:req.query.Phone_no,
-    address:req.query.Address,})
-    console.log('just call',temp)
-    // res.send("hi")
+apiRoutes.get('/addteacher', async (req, res) => {
+    let temp = req.query
+    // console.log('just call',temp)
+    let temp1 = await dbobj.addTeacherStudent(temp), temp2
+    // console.log(temp1,'here')
+    if (temp1['acknowledged']) {
+        // console.log('sdfbshfvbds',temp1['insertedId'])}
+        let obj = {
+            tittle: 'Paaword For Teacher Login',
+            body: 'Password for your login is '+temp1['insertedId']
+
+        };
+
+        temp2 = await sendmail(obj)
+        temp2 = temp2.split(' ')
+        console.log('wait done', obj)
+        // sendmail()
+    } else {
+        temp2 = { error: 'Email not send' }
+    }
+    console.log()
+    res.send(temp2)
 })
+function sendmail(obj) {
+    return new Promise((resolve, reject) => {
+        var nodemailer = require('nodemailer');
+
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'khizarshaikh2922@gmail.com',
+                pass: 'iywksemzmbkfrtub'
+            }
+        });
+
+        var mailOptions = {
+            from: 'don',
+            to: 'dashingboyraj1212@gmail.com',
+            subject: obj.tittle,
+            text: `${obj.body}`,
+
+        };
+        // console.log(obj)
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+                resolve(error.response)
+            } else {
+                // console.log('Email sent: ' + info.response);
+                resolve(info.response)
+            }
+            // resolve(obj)
+        });
+    })
+}
 //  sdds
-module.exports = apiRoutes 
+module.exports = apiRoutes
 // {"_id":{"$oid":"62973c579bab0552de9648b8"},
 // name":"KHizar Shaikh","ID":"FS19IF034","departement":"Information Technology",
 // "subject":"Math","address":"Malad West Mumbai","phone_no":"8828045311"}
