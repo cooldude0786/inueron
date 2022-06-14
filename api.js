@@ -73,24 +73,29 @@ apiRoutes.get('/addteacher', async (req, res) => {
     let temp = req.query
     // console.log('just call',temp)
     let temp1 = await dbobj.addTeacherStudent(temp), temp2
-    // console.log(temp1,'here')
-    if (temp1['acknowledged']) {
-        // console.log('sdfbshfvbds',temp1['insertedId'])}
+    console.log('here', temp1)
+    if (!temp1['acknowledged']) {//insert in db
         let obj = {
             tittle: 'Paaword For Teacher Login',
-            body: 'Password for your login is '+temp1['insertedId']
-
+            body: 'Password for your login is ' + temp1['insertedId']
         };
 
         temp2 = await sendmail(obj)
         temp2 = temp2.split(' ')
-        console.log('wait done', obj)
-        // sendmail()
-    } else {
-        temp2 = { error: 'Email not send' }
+        if (temp2.includes('OK')) {//email send
+            console.log('wait done', temp2)
+            res.send(temp2)
+        } else {//email send fails
+            temp2 = { error: 'Email not send' }
+            res.send(temp2)
+            let temp3 = await dbobj.DeleteApproveTeacher(temp1['insertedId'])
+            res.send(temp3)
+        }
+    } else {//insert in db fails
+        console.log('not send')
+        let temp3 = await dbobj.DeleteApproveTeacher(temp1['insertedId'])
+        res.send(temp3)
     }
-    console.log()
-    res.send(temp2)
 })
 function sendmail(obj) {
     return new Promise((resolve, reject) => {
@@ -114,8 +119,8 @@ function sendmail(obj) {
         // console.log(obj)
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
-                console.log(error);
-                resolve(error.response)
+                console.log(error.responseCode);
+                resolve(error.responseCode)
             } else {
                 // console.log('Email sent: ' + info.response);
                 resolve(info.response)

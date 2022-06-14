@@ -466,13 +466,14 @@
                         console.log(data)
                         $('.toast').toast({ delay: 2000 });
                         $1("Toast-Message").innerHTML = "insert it"
-                        // $('#UpdateTeacher').click()
                         $('#toast').toast('show')
-                        // setTimeout((() => {
-                            // document.getElementById('ApproveStudent').click()
                             $("#UpdateTeacher").click()
-                        // }), 2000)
                     }
+                   else if(data.hasOwnProperty('deletedCount')){
+                    $('.toast').toast({ delay: 2000 });
+                        $1("Toast-Message").innerHTML = "Can't Register Teacher"
+                        $('#toast').toast('show')
+                   }
                    else
                     console.log('data dosent their')
                 })

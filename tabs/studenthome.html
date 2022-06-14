@@ -44,23 +44,12 @@
     <div class="col-md-12 d-flex main-body-container">
         <div class="sub-container col-md-4">
             search teacher
-            <div class="input-group mb-3">
-                <input type="text" id="teacher-name" class="form-control" placeholder="Enter Teacher Name"
-                    aria-label="Enter Teacher Name">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="search-teacher"><i
-                            class="fa-solid fa-magnifying-glass"></i></button>
-                </div>
-            </div>
-            <select class="custom-select" id="inputGroupSelect01">
+            <select class="custom-select" id="search-teacher">
                 <option selected>Choose...</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
-            <div class="teacher-selector border d-flex flex-column mt-2 p-2 rounded" id="1" onclick="selected(this)">
-                <span id="123">dhgsdh1</span>
-            </div>
         </div>
         <div class="sub-container col-md-4">
             book appointement
@@ -70,6 +59,13 @@
         </div>
     </div>
     <script>
+
+        $(document).ready(function () {
+            console.log('ready now')
+            $.get('/api/getTeacher',function(data){
+                console.log(data)
+            })
+        });
         let from_click = 0
         $("#sub-box-1").click(() => {
             ("from sub-scroller-" + from_click)
@@ -116,19 +112,13 @@
                 $("#sub-scroller-" + arguments[1]).addClass('width-100-r').removeClass("width-100")
             }
         }
-        $("#search-teacher").click(() => {
-            console.log($("#teacher-name").val())
-        })
-        function selected(t) {
-            // $(".teacher-selector").addClass("bg-dark")
-            console.log('asdad', t)
-        }
-        $("#teacher-name").focusin((event) => {
-            console.log("as", event)
+        $('#search-teacher').click(() => {
+            let selected = $('#search-teacher').val()
+            console.log(selected)
         })
 
-// mongodb+srv://khizar:<password>@cluster0.ijkkm.mongodb.net/?retryWrites=true&w=majority
-       
+        // mongodb+srv://khizar:<password>@cluster0.ijkkm.mongodb.net/?retryWrites=true&w=majority
+
 
     </script>
 </body>
