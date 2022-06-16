@@ -51,6 +51,19 @@
     transition: width .30s linear;
     left: 0;
 }
+.bgcb{
+  background-color: cadetblue;
+}
+.h-280{
+  height: 280px;
+}
+.bottom-left{
+  bottom: 4px;
+  left: 0;
+}
+.chat-box{
+  height: 238px;
+}
 /* .teacher-selector:hover {
   background-color: red;
 } */
