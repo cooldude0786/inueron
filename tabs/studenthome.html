@@ -81,7 +81,8 @@
             <input type="date" class="form-control" name="date" id="date">
             <input type="time" class="form-control" id="time" name="appt">
             <div class="p-2 justify-content-center d-flex">
-                <button class="btn btn-outline-danger">ddds</button>
+                <button class="btn btn-outline-danger c-na" id="book-aapointement" disabled>Request For
+                    Appointment</button>
             </div>
         </div>
         <div class="sub-container col-md-4">
@@ -109,6 +110,14 @@
         });
         $('#time').focusout(() => {
             console.log($('#time').val(), 'sdsdfsf')
+            if ($('#time').val() != '') {
+                $('#book-aapointement').removeClass('c-na')
+                $('#book-aapointement').style.cursor = 'alias'
+                console.log('not empty')
+            } else {
+                $('#book-aapointement').addClass('c-na')
+                console.log('empty')
+            }
         })
         $('#date').click(() => { console.log('call the date') })
         let from_click = 0
