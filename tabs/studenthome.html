@@ -76,10 +76,11 @@
                 </div>
             </div>
         </div>
-        <div class="sub-container col-md-4 d-flex flex-column">
+
+        <div class="sub-container col-md-4 d-flex flex-column op-0-5" id="Book-Appointement">
             book appointement
-            <input type="date" class="form-control" name="date" id="date">
-            <input type="time" class="form-control" id="time" name="appt">
+            <input type="date" class="form-control c-na" name="date" id="date">
+            <input type="time" class="form-control c-na" id="time" name="appt">
             <div class="p-2 justify-content-center d-flex">
                 <button class="btn btn-outline-danger c-na" id="book-aapointement" disabled>Request For
                     Appointment</button>
@@ -100,7 +101,7 @@
     </div>
     <script>
         var selected;
-        var ApiData = [];
+        var ApiData = []; date = null, time = null
         $(document).ready(function () {
             console.log('ready now')
             $.get('/api/getTeacher', function (data) {
@@ -111,15 +112,35 @@
         $('#time').focusout(() => {
             console.log($('#time').val(), 'sdsdfsf')
             if ($('#time').val() != '') {
-                $('#book-aapointement').removeClass('c-na')
-                $('#book-aapointement').style.cursor = 'alias'
-                console.log('not empty')
+                time = $('#time').val()
+                // console.log('not empty')
+                CheckStatusData()
             } else {
                 $('#book-aapointement').addClass('c-na')
-                console.log('empty')
+                // console.log('empty')
+                document.getElementById('book-aapointement').style.cursor = 'not-allowed'
+                document.getElementById('book-aapointement').disabled = true
             }
         })
-        $('#date').click(() => { console.log('call the date') })
+        function CheckStatusData() {
+            if (date != null & time != null) {
+                document.getElementById('book-aapointement').style.cursor = 'pointer'
+                document.getElementById('book-aapointement').disabled = false
+                $('#book-aapointement').removeClass('c-na')
+            }
+        }
+        $('#date').focusout(() => {
+            if($('#date').val()!=''){
+                date = $('#date').val()
+            }
+            CheckStatusData()
+            // console.log('call the date')
+        })
+        $('#book-aapointement').click(()=>{
+            console.log('hi')
+            console.log('date',date,'time',time,'id',selected)
+            
+        })
         let from_click = 0
         $("#sub-box-1").click(() => {
 
@@ -177,6 +198,12 @@
             console.log(selected)
             if (selected == 'null') {
                 $("#teacher-details").addClass('d-none')
+                $("#Book-Appointement").addClass('op-0-5')
+                $("#date").addClass('c-na')
+                $("#time").addClass('c-na')
+                document.getElementById('book-aapointement').disabled = true
+                document.getElementById('book-aapointement').style.cursor = 'not-allowed'
+
                 console.log('this is', selected)
 
             } else {
@@ -191,12 +218,16 @@
                     }
                 }
                 console.log('this is ', selected)
+                $("#Book-Appointement").removeClass('op-0-5')
+                $("#date").removeClass('c-na')
+                $("#time").removeClass('c-na')
             }
+
         })
         function AddDataToList(obj) {
             let containe;
             ApiData = obj
-            console.log('data in global', ApiData)
+            // console.log('data in global', ApiData)
             for (i = 0; i < obj.length; i++) {
                 console.log('val', obj[i])
                 if (i == 0) {
@@ -207,6 +238,8 @@
                     containe += `<option value="${obj[i]._id}">${obj[i].name}</option>`
             }
             document.getElementById('search-teacher').innerHTML = containe
+            $('#search-teacher').click()
+
         }
         // mongodb+srv://khizar:<password>@cluster0.ijkkm.mongodb.net/?retryWrites=true&w=majority
 
