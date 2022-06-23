@@ -84,6 +84,16 @@
                                 aria-label="Enter Address">
                         </div>
                     </div>
+
+                    <div class="d-flex justify-content-around flex-wrap py-1">
+                        <div>
+                            <span id="felidemail" class="spanfiled">Email</span>
+                            <input type="text" name="Email" id="Email"
+                                class="form-control" placeholder="Email" aria-label="Enter Email">
+                        </div>
+                    </div>
+
+
                     <div class="d-flex py-1 justify-content-center">
                         <button class="btn btn-dark" type="submit">Submit</button>
                     </div>
@@ -401,6 +411,8 @@
             let ID = document.getElementById("ID")
             let Phone_no = document.getElementById("Phone_no")
             let address = document.getElementById("address")
+            let Email = document.getElementById("Email")
+            
             let temp = 0; url = '?'
             if (name.value == "") {
                 $1("felidname").classList.add("error")
@@ -456,7 +468,16 @@
                 temp += 1
                 url += '&address=' + address.value
             }
-            if (temp != 6) {
+            if (Email.value == "") {
+                $1("felidemail").classList.add("error")
+                Email.classList.add("errorinput")
+            } else {
+                $1("felidemail").classList.remove("error")
+                Email.classList.remove("errorinput")
+                temp += 1
+                url += '&email=' + Email.value
+            }
+            if (temp != 7) {
                 return false
             } else {
                 console.log('submit form')

@@ -72,14 +72,14 @@ apiRoutes.get('/deleteTeacher', async (req, res) => {
 apiRoutes.get('/addteacher', async (req, res) => {
     let temp = req.query
     // console.log('just call',temp)
-    let temp1 = await dbobj.addTeacherStudent(temp), temp2
+    let temp1 = await dbobj.addTeacherStudent(temp),
+     temp2
     console.log('here', temp1)
-    if (!temp1['acknowledged']) {//insert in db
+    if ( temp1['acknowledged']) {//insert in db
         let obj = {
             tittle: 'Paaword For Teacher Login',
             body: 'Password for your login is ' + temp1['insertedId']
         };
-
         temp2 = await sendmail(obj)
         temp2 = temp2.split(' ')
         if (temp2.includes('OK')) {//email send
