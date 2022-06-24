@@ -99,7 +99,7 @@ body {
 .t-msg {
   position: fixed;
   top: 56px;
-  right: 20px ;
+  right: 20px;
   height: auto;
   background-color: lightgreen;
 }
@@ -119,4 +119,7 @@ body {
 } */
 .fade {
   transition: opacity 0.15s linear, top 0.25s linear;
+}
+.f-t-10 {
+  font-size: 10px;
 }

@@ -88,8 +88,8 @@
                     <div class="d-flex justify-content-around flex-wrap py-1">
                         <div>
                             <span id="felidemail" class="spanfiled">Email</span>
-                            <input type="text" name="Email" id="Email"
-                                class="form-control" placeholder="Email" aria-label="Enter Email">
+                            <input type="text" name="Email" id="Email" class="form-control" placeholder="Email"
+                                aria-label="Enter Email">
                         </div>
                     </div>
 
@@ -341,8 +341,13 @@
                                     placeholder="address" aria-label="Enter Address">
                             </div>
                         </div>
-
-
+                        <div class="d-flex justify-content-around flex-wrap py-1">
+                            <div class="col-md-10">
+                                <span id="felidemail" class="spanfiled">Email</span>
+                                <input type="text" name="email" id="modalemail"
+                                    class="form-control" placeholder="Email" aria-label="Enter Phone no.">
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -412,7 +417,7 @@
             let Phone_no = document.getElementById("Phone_no")
             let address = document.getElementById("address")
             let Email = document.getElementById("Email")
-            
+
             let temp = 0; url = '?'
             if (name.value == "") {
                 $1("felidname").classList.add("error")
@@ -488,15 +493,15 @@
                         $('.toast').toast({ delay: 2000 });
                         $1("Toast-Message").innerHTML = "insert it"
                         $('#toast').toast('show')
-                            $("#UpdateTeacher").click()
+                        $("#UpdateTeacher").click()
                     }
-                   else if(data.hasOwnProperty('deletedCount')){
-                    $('.toast').toast({ delay: 2000 });
+                    else if (data.hasOwnProperty('deletedCount')) {
+                        $('.toast').toast({ delay: 2000 });
                         $1("Toast-Message").innerHTML = "Can't Register Teacher"
                         $('#toast').toast('show')
-                   }
-                   else
-                    console.log('data dosent their')
+                    }
+                    else
+                        console.log('data dosent their')
                 })
                 return false
             }
@@ -679,6 +684,7 @@
         }
         function addTeacher(data, count) {
             let temp;
+            console.log('data from bk', data)
             temp = `  <div class="utcard  p-2 rounded col-sm-3">`
             temp += `  <div class="p-1 rounded bcblack col-sm-12">`
             temp += `  <div id="${data['_id']}" onclick="CardContain(this)"class="${count} d-flex flex-column bcwhite justify-content-between col-sm-12 ffserif">`
@@ -704,6 +710,10 @@
             temp += `  <div>Subject :</div>`
             temp += `  <div>${data['subject']}</div>`
             temp += `  </div>`
+            temp += `  <div class="d-flex p-1 col-sm-12 flex-wrap align-items-center">`
+            temp += `  <div>Email :</div>`
+            temp += `  <div class='f-t-10 '>${data['email']}</div>`
+            temp += `  </div>`
             temp += `  </div>`
             temp += `  </div>`
             temp += `  </div>`
@@ -721,6 +731,7 @@
             document.getElementById('modalupdateID').value = teacherData[This.classList[0]]['ID']
             document.getElementById('modalPhone_no').value = teacherData[This.classList[0]]['phone_no']
             document.getElementById('modalupdateaddress').value = teacherData[This.classList[0]]['address']
+            document.getElementById('modalemail').value = teacherData[This.classList[0]]['email']
             // console.log(This.classList)
         }
     </script>
